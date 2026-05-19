@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Amazon Associates tag
+const TAG = "htownguide20-20";
+const amzn = (asin: string) => `https://www.amazon.com/dp/${asin}?tag=${TAG}`;
+
+const sections = [
+  {
+    heading: "What to read before you come",
+    intro: "Houston rewards travelers who arrive with some context. The city is sprawling, layered with cultures, and historically misunderstood. Three books will change how you see it.",
+    items: [
+      {
+        title: "Cite: The Texas Houston Story",
+        author: "Stephen Fox & Gerald Moorhead",
+        why: "The definitive architectural and cultural guide to Houston. Heavy, beautiful, and will make you appreciate buildings you'd otherwise drive past.",
+        asin: "0292727887",
+      },
+      {
+        title: "The Accommodation: The Politics of Race in an American City",
+        author: "Jim Schutze",
+        why: "Houston neighbor Dallas's race history — essential context for understanding all of Texas's major cities including Houston.",
+        asin: "1646050231",
+      },
+      {
+        title: "Houston: A History of a Global City",
+        author: "Debbie Z. Harwell",
+        why: "How a swampy outpost became one of America's most international cities. Surprising and well-written.",
+        asin: "1623496888",
+      },
+    ],
+  },
+  {
+    heading: "What to pack for Houston weather",
+    intro: "Houston's climate is famously aggressive — humid summers, mild winters, sudden storms. A few specific items make a real difference.",
+    items: [
+      {
+        title: "Lightweight breathable rain jacket",
+        author: "Columbia Watertight II",
+        why: "Houston gets hit with brief heavy rain even in summer. A packable rain jacket beats wet clothes. Stuffs into its own pocket.",
+        asin: "B00HV02VW2",
+      },
+      {
+        title: "Reef-safe sunscreen SPF 50",
+        author: "Sun Bum",
+        why: "Texas sun is no joke. SPF 50 minimum, especially if you'll be at Hermann Park, Discovery Green, or a Texans/World Cup game at NRG.",
+        asin: "B07KMYW1MK",
+      },
+      {
+        title: "Reusable insulated water bottle",
+        author: "Hydro Flask 32oz",
+        why: "Heat plus humidity equals constant dehydration. Most Houston restaurants and museums will refill these for free.",
+        asin: "B077JBQZPX",
+      },
+      {
+        title: "Comfortable walking shoes",
+        author: "Hoka Bondi 8",
+        why: "If you're walking Buffalo Bayou, the Museum District, or Montrose's Westheimer strip, your feet will thank you. Avoid blisters; this trip involves more walking than you'd expect for a Texas city.",
+        asin: "B0B5KW48PT",
+      },
+    ],
+  },
+  {
+    heading: "Travel gear for Houston specifically",
+    intro: "A few practical items that pay off in this city.",
+    items: [
+      {
+        title: "Anker portable phone charger",
+        author: "PowerCore 10000",
+        why: "Long days walking with phone GPS, ride-share apps, and constant photo-taking will drain your battery. Small, light, gets you through.",
+        asin: "B0194WDVHI",
+      },
+      {
+        title: "Crossbody anti-theft bag",
+        author: "Travelon",
+        why: "Better than a backpack for moving through restaurants and museums. RFID-blocking pockets are useful at big events like World Cup matches.",
+        asin: "B0026RH8VC",
+      },
+      {
+        title: "Houston Texans cap",
+        author: "47 Brand",
+        why: "Locals appreciate when visitors show team spirit. Texans games are a Houston ritual — and the cap doubles as sun protection.",
+        asin: "B07DLDXG13",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Houston Travel Essentials — Books, Gear, and What to Pack | HtownGuide"
+  description="A curated list of books, travel gear, and Houston-specific essentials to read and pack before your trip. Recommended by HtownGuide locals."
+>
+  <section class="mx-auto max-w-3xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Essentials</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl tracking-tight leading-[0.95] mb-6 text-balance">
+      Read this, <em class="italic font-normal text-[color:var(--color-clay)]">pack this</em>.
+    </h1>
+    <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      A short list of books worth reading before you come and gear worth packing once you do — the things we'd actually hand a friend visiting Houston for the first time.
+    </p>
+  </section>
+
+  {sections.map((section) => (
+    <section class="mx-auto max-w-3xl px-6 py-12">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-3 text-balance">{section.heading}</h2>
+      <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-10 text-pretty">{section.intro}</p>
+
+      <div class="space-y-6">
+        {section.items.map((it) => (
+          <a
+            href={amzn(it.asin)}
+            target="_blank"
+            rel="noopener nofollow sponsored"
+            class="block bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-6 hover:bg-[color:var(--color-cream-deep)] transition-colors group"
+          >
+            <span class="block text-xs uppercase tracking-[0.18em] text-[color:var(--color-clay)] mb-2">{it.author}</span>
+            <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">{it.title}</h3>
+            <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{it.why}</p>
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+              View on Amazon
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <div class="bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-8 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+      <strong class="text-[color:var(--color-ink)]">A note on links:</strong> Some links on this page are Amazon affiliate links. If you buy something after clicking through, HtownGuide earns a small commission at no extra cost to you. It helps keep the site free and ad-light. We only recommend things we'd actually suggest to a friend. See our <a href="/disclosure" class="underline hover:text-[color:var(--color-clay)]">full disclosure</a>.
+    </div>
+  </section>
+</BaseLayout>
