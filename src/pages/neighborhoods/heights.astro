@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const sections = [
+  {
+    kicker: "What it is",
+    body: "The Heights sits a few miles north of downtown on a slight rise that gave the neighborhood its name — and in a city as flat as Houston, even thirty feet of elevation matters. It's a grid of restored 1900s bungalows, Queen Anne Victorians, and bigger Craftsman homes, anchored by two commercial spines: West 19th Street and White Oak Drive. Both run thick with indie boutiques, neighborhood restaurants, breweries, and bars with proper patios. The Heights has gentrified hard in the last decade, but the architecture and tree canopy still carry the original character.",
+  },
+  {
+    kicker: "Who it's for",
+    body: "Slow travelers who'd rather wander 19th Street with an iced coffee than tick off attractions. Design-curious visitors. Families who want a walkable neighborhood. Anyone who wants Houston to feel like a small town for an afternoon.",
+  },
+];
+
+const eatDrink = [
+  { name: "Coltivare", note: "Heights neighborhood Italian with a backyard garden that grows produce for the kitchen. The pizza is the move. Reserve well ahead." },
+  { name: "Pinkerton's Barbecue", note: "Heights smokehouse with technically masterful brisket and creative sides. Smaller and friendlier than the Austin BBQ pilgrimages." },
+  { name: "Better Luck Tomorrow", note: "Bar-restaurant in a converted house. Strong cocktail program, food worth ordering, the kind of neighborhood spot every neighborhood wishes it had." },
+  { name: "Eight Row Flint", note: "Whiskey bar with a serious bourbon list and a deep menu of bar food and tacos. Patio drinking, year-round." },
+  { name: "Hugs & Donuts", note: "Heights donut shop done right. Get there before noon on weekends." },
+  { name: "Saint Arnold Brewing Company", note: "Texas's oldest craft brewery, just east of the Heights. Beer garden, food, family-friendly. A standing weekend plan." },
+];
+
+const seeDo = [
+  { name: "Heights Mercantile", note: "Restored historic complex on Heights Boulevard with restaurants, indie shops, and a popular Saturday farmer's market." },
+  { name: "Heights Hike & Bike Trail", note: "Six paved miles along the old railroad bed. The most walkable continuous path in inner-loop Houston. Free." },
+  { name: "Heights Theater", note: "Restored 1929 theater turned music venue and event space. Check the calendar — surprisingly serious touring acts." },
+  { name: "19th Street shopping", note: "The Heights' best commercial block. Manready Mercantile (men's), Casa Ramirez (folk art), Hello Lucky, and a half-dozen excellent vintage and home stores." },
+  { name: "Heights walking tours", note: "Houston Heights Association runs occasional architecture tours. The neighborhood has more original turn-of-the-century homes than anywhere else in the city." },
+];
+
+const localTips = [
+  "Saturday morning at the Heights Mercantile farmer's market is peak Heights — coffee, produce, a great people-watch.",
+  "Most Heights restaurants don't take reservations or take only a few. Get there early or be patient with the wait.",
+  "The Heights is technically dry in some pockets — a holdover from old zoning. Some restaurants serve via 'private club' setups. Pay the dollar, fill out the card, you're a member.",
+  "White Oak Drive is the bar/nightlife street; 19th Street is shopping and brunch. Different vibes a few blocks apart.",
+  "Parking is generally easier than in Montrose, but on Saturday afternoons around the Mercantile, give yourself extra time."
+];
+---
+
+<BaseLayout
+  title="The Heights, Houston — A Local's Guide to Houston's Most Walkable Historic Neighborhood | HtownGuide"
+  description="An honest guide to The Heights in Houston: where to eat on 19th Street and White Oak, the best bars and breweries, things to do, and what makes this historic neighborhood different."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <a href="/neighborhoods" class="inline-flex items-center gap-2 text-sm text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] mb-8">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All neighborhoods
+    </a>
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Neighborhood · 03</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      The <em class="italic font-normal text-[color:var(--color-clay)]">Heights</em>.
+    </h1>
+    <p class="mt-8 max-w-2xl text-xl leading-relaxed text-[color:var(--color-ink-soft)] text-pretty italic font-[family-name:var(--font-display)]">
+      Restored Victorians, an indie commercial strip, and the rare Houston neighborhood that feels like a small town.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-12 md:grid-cols-12">
+    {sections.map((s) => (
+      <article class="md:col-span-6">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">{s.kicker}</span>
+        <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">{s.body}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Eat & drink</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Neighborhood spots worth the drive across town.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {eatDrink.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">See & do</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Spend an afternoon wandering.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {seeDo.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-14 md:py-16 grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">Local notes</span>
+        <h2 class="font-[family-name:var(--font-display)] text-3xl tracking-tight text-balance">Five things a guidebook won't tell you.</h2>
+      </div>
+      <ul class="md:col-span-8 space-y-4">
+        {localTips.map((t, i) => (
+          <li class="flex gap-4 text-base leading-relaxed">
+            <span class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-gold)] leading-none flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-[color:var(--color-paper)]/90">{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-3">
+    <a href="/neighborhoods/montrose" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Montrose →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Art, queer history, the city's most walkable grid.</p>
+    </a>
+    <a href="/neighborhoods/downtown" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Downtown →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Stadiums, sky bars, theaters, and tunnels.</p>
+    </a>
+    <a href="/neighborhoods/museum-district" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Museum District →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Nineteen museums in a walkable circle.</p>
+    </a>
+  </section>
+</BaseLayout>

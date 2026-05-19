@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const sections = [
+  {
+    kicker: "What it is",
+    body: "Nineteen museums inside a 1.5-mile circle, anchored by the 445-acre Hermann Park. The Museum District started forming around the Museum of Fine Arts Houston in 1924 and grew outward — now it includes natural science, children's, contemporary art, photography, holocaust, weather, health, and ethnic and cultural museums all within easy walking distance of each other. Eleven of the nineteen are free at least one day a week. The MFAH and HMNS alone justify two full days.",
+  },
+  {
+    kicker: "Who it's for",
+    body: "Culture-first travelers. Families with kids — the Children's Museum here is consistently top-ranked nationally. Anyone visiting Houston in summer who needs strong indoor air-conditioning options. Rainy-day plans. People who want one neighborhood that does most of their sightseeing for them.",
+  },
+];
+
+const seeDo = [
+  { name: "Museum of Fine Arts, Houston (MFAH)", note: "Tenth-largest art museum in the country. The Glassell Collection of African Gold is one of the best in the world. Free general admission on Thursdays. Plan a half-day minimum." },
+  { name: "The Menil Collection (nearby)", note: "Technically in Montrose but a short drive — and free. Surrealism, Byzantine icons, Cy Twombly, Rothko Chapel. Among the most distinctive small-museum experiences in America." },
+  { name: "Houston Museum of Natural Science (HMNS)", note: "Dinosaur halls are world-class; gem and mineral collection is exceptional. The Burke Baker Planetarium is the largest in the southwest. Easy 3-4 hour visit." },
+  { name: "Children's Museum Houston", note: "Consistently ranked #1 or #2 children's museum in the U.S. Reserve tickets in advance; it gets crowded on rainy days and school holidays." },
+  { name: "Contemporary Arts Museum Houston (CAMH)", note: "Free. Rotating contemporary exhibitions in a striking metal-clad building. Always worth an hour." },
+  { name: "Asia Society Texas Center", note: "Free on Thursdays. Beautiful Yoshio Taniguchi building. Strong rotating exhibitions, performances, and a quiet sculpture garden." },
+  { name: "Holocaust Museum Houston", note: "Free general admission. One of the most visited Holocaust museums in the U.S. Sobering and important." },
+  { name: "Houston Center for Photography", note: "Small, free, well-curated. Rotating exhibitions of contemporary photography." },
+  { name: "Hermann Park", note: "The 445-acre park that holds the district together. Japanese Garden, paddle boats on McGovern Lake, free outdoor theater at Miller Outdoor Theatre in summer." },
+];
+
+const eatDrink = [
+  { name: "Lucille's", note: "Soul food and Southern with an unexpected refinement on the edge of the Museum District. Reliable for any meal. Get the chicken." },
+  { name: "Pinkerton's BBQ (Heights)", note: "Slightly outside the district but a frequent post-museum BBQ pilgrimage." },
+  { name: "MFAH Café", note: "Better-than-it-needs-to-be museum food, useful for breaking up a long MFAH visit." },
+  { name: "Local Foods - Rice Village", note: "Casual, healthy lunch spot a short drive away in Rice Village. The kale and quinoa salad is a Houston staple." },
+];
+
+const localTips = [
+  "Most museums are closed Mondays. Plan the district for Wednesday–Sunday.",
+  "Thursdays are the day for free admission at the MFAH (general collection only — special exhibitions still ticketed).",
+  "Don't try to see more than 2–3 museums in a day. They reward attention, not speed.",
+  "Hermann Park has free parking lots — useful, since on-street parking around the museums fills up fast on weekends.",
+  "The METRORail Red Line stops at multiple Museum District stations and at Hermann Park. From downtown or NRG, it's the easiest way in.",
+];
+---
+
+<BaseLayout
+  title="Museum District, Houston — A Guide to 19 Museums in One Walkable Mile | HtownGuide"
+  description="The Museum District in Houston: a full guide to the MFAH, Children's Museum, Houston Museum of Natural Science, and 16 others — what's free, what's worth your day, what to skip."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <a href="/neighborhoods" class="inline-flex items-center gap-2 text-sm text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] mb-8">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All neighborhoods
+    </a>
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Neighborhood · 04</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      <em class="italic font-normal text-[color:var(--color-clay)]">Museum District.</em>
+    </h1>
+    <p class="mt-8 max-w-2xl text-xl leading-relaxed text-[color:var(--color-ink-soft)] text-pretty italic font-[family-name:var(--font-display)]">
+      Nineteen museums in a one-and-a-half-mile circle. Most cost nothing.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-12 md:grid-cols-12">
+    {sections.map((s) => (
+      <article class="md:col-span-6">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">{s.kicker}</span>
+        <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">{s.body}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">See & do</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      The headline museums, and the smaller ones worth a stop.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {seeDo.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Eat & drink</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Lunch and dinner without leaving the area.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {eatDrink.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-14 md:py-16 grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">Local notes</span>
+        <h2 class="font-[family-name:var(--font-display)] text-3xl tracking-tight text-balance">Five things a guidebook won't tell you.</h2>
+      </div>
+      <ul class="md:col-span-8 space-y-4">
+        {localTips.map((t, i) => (
+          <li class="flex gap-4 text-base leading-relaxed">
+            <span class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-gold)] leading-none flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-[color:var(--color-paper)]/90">{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-3">
+    <a href="/neighborhoods/montrose" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Montrose →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Art, queer history, walkable streets.</p>
+    </a>
+    <a href="/neighborhoods/heights" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">The Heights →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Restored Victorians and an indie commercial strip.</p>
+    </a>
+    <a href="/neighborhoods/downtown" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Downtown →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Stadiums, sky bars, theaters, tunnels.</p>
+    </a>
+  </section>
+</BaseLayout>

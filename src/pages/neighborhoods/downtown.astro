@@ -1,0 +1,133 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const sections = [
+  {
+    kicker: "What it is",
+    body: "Downtown Houston is a city in two stories. Aboveground: high-rise canyons, three major-league stadiums, the Theater District, and a slowly thickening crop of restaurants and rooftop bars. Belowground: a seven-mile underground tunnel system connecting most of downtown's office towers, where weekday lunches happen out of the Texas heat. Downtown empties out on weekends — that's improving but it's still real — so plan accordingly.",
+  },
+  {
+    kicker: "Who it's for",
+    body: "Sports fans. Business travelers. Theater-goers. First-time visitors who want a hotel near everything. World Cup 2026 visitors who want easy METRORail access to NRG. Anyone who wants to stay in walking distance of the Astros, the Rockets, the Theater District, and ten rooftop bars.",
+  },
+];
+
+const eatDrink = [
+  { name: "Xochi", note: "Hugo Ortega's Oaxacan flagship in the Marriott Marquis. Get the mole tasting flight if it's available. Among the most distinctive restaurants in the city." },
+  { name: "Brennan's of Houston", note: "Creole institution with Texas inflection. Strong brunch, strong special-occasion energy, the turtle soup is famous for a reason." },
+  { name: "Caracol", note: "Hugo Ortega's coastal-Mexican seafood restaurant — actually in the Galleria area, but a frequent downtown-business-dinner staple worth the short ride." },
+  { name: "Hearsay Gastro Lounge", note: "In a beautifully restored 1880s building in Market Square. Solid bar food, the patio looks straight onto the square." },
+  { name: "OKRA Charity Saloon", note: "All bar profits go to a rotating charity voted on by patrons. Drinks are good. The premise is great. A Market Square mainstay." },
+  { name: "POST Houston", note: "Massive food hall and event space in the former main post office. 30+ vendors, rooftop park with a view of downtown. Useful especially for groups with mixed preferences." },
+];
+
+const seeDo = [
+  { name: "Minute Maid Park (Astros)", note: "Retractable-roof stadium right downtown. The Astros play April–September. A game here is one of the city's best evening plans in summer." },
+  { name: "Toyota Center (Rockets)", note: "NBA arena, October–April season. Easy walk from most downtown hotels." },
+  { name: "The Theater District", note: "Second-largest concentration of theater seats in the U.S. after Broadway — opera, ballet, symphony, plays all within a few blocks. Check Houston Grand Opera, Alley Theatre, and Society for the Performing Arts schedules." },
+  { name: "Discovery Green", note: "12-acre downtown park across from the convention center. Free events, ice skating in winter, a lake with model boats, food trucks. The most successful piece of urban design in modern Houston." },
+  { name: "The downtown tunnel system", note: "Seven miles of underground walkways connecting most major office towers. Lined with food courts, dry cleaners, shoe shines. Open weekdays only. Genuinely useful in summer." },
+  { name: "Market Square Park", note: "Small park in downtown's historic district, surrounded by some of the oldest buildings in the city. Free movie nights and concerts in season." },
+];
+
+const localTips = [
+  "Downtown empties out after 6 PM most weekdays and is quiet on weekends — even when busy elsewhere, the tunnels are closed. Plan dinners in Montrose or the Heights, then Uber back.",
+  "If you're going to an Astros game in summer, the retractable roof is closed and AC is fierce. Bring a layer — yes, in Houston.",
+  "METRORail Red Line connects downtown straight to NRG Stadium for World Cup matches and Texans games. Easier than driving and parking.",
+  "The Theater District has its own dedicated parking — green-lighted garages connect via tunnel to most theaters. Use them on rainy nights.",
+  "Rooftop bars to know: 51fifteen (atop the Saks/Galleria), High Bar at La Colombe d'Or (Montrose), and the LINE's rooftop in Austin — wait, that's Austin. In Houston, try POST Houston's rooftop park or the bar at the Hotel ICON for downtown skyline views."
+];
+---
+
+<BaseLayout
+  title="Downtown Houston — A Visitor's Guide to Hotels, Stadiums, Theaters, and the Tunnels | HtownGuide"
+  description="A real guide to Downtown Houston: where to stay near the stadiums, the best restaurants and rooftop bars, the Theater District, and the famous underground tunnel system."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <a href="/neighborhoods" class="inline-flex items-center gap-2 text-sm text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] mb-8">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All neighborhoods
+    </a>
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Neighborhood · 01</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      <em class="italic font-normal text-[color:var(--color-clay)]">Downtown.</em>
+    </h1>
+    <p class="mt-8 max-w-2xl text-xl leading-relaxed text-[color:var(--color-ink-soft)] text-pretty italic font-[family-name:var(--font-display)]">
+      Stadiums, sky bars, theaters, and seven miles of underground tunnels.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-12 md:grid-cols-12">
+    {sections.map((s) => (
+      <article class="md:col-span-6">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">{s.kicker}</span>
+        <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">{s.body}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Eat & drink</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Where to eat without leaving downtown.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {eatDrink.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">See & do</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Three pro sports teams. Top-five U.S. theater scene. And the tunnels.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {seeDo.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-14 md:py-16 grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">Local notes</span>
+        <h2 class="font-[family-name:var(--font-display)] text-3xl tracking-tight text-balance">Five things a guidebook won't tell you.</h2>
+      </div>
+      <ul class="md:col-span-8 space-y-4">
+        {localTips.map((t, i) => (
+          <li class="flex gap-4 text-base leading-relaxed">
+            <span class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-gold)] leading-none flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-[color:var(--color-paper)]/90">{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-3">
+    <a href="/neighborhoods/montrose" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Montrose →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Art, queer history, the city's most walkable grid.</p>
+    </a>
+    <a href="/neighborhoods/heights" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">The Heights →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Restored Victorians and an indie commercial strip.</p>
+    </a>
+    <a href="/neighborhoods/museum-district" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Museum District →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Nineteen museums in a walkable circle.</p>
+    </a>
+  </section>
+</BaseLayout>

@@ -64,24 +64,35 @@ const neighborhoods = [
   <section class="mx-auto max-w-7xl px-6 py-12">
     <div class="space-y-px bg-[color:var(--color-ink)]/10">
       {
-        neighborhoods.map((n, i) => (
-          <article class="bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-8 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors duration-300">
-            <div class="md:col-span-2">
-              <span class="font-[family-name:var(--font-display)] text-5xl md:text-6xl italic text-[color:var(--color-clay)]/40">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-            <div class="md:col-span-7">
-              <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2">{n.name}</h2>
-              <p class="text-base italic text-[color:var(--color-ink-soft)] mb-4">{n.short}</p>
-              <p class="text-[color:var(--color-ink-soft)] leading-relaxed text-pretty">{n.long}</p>
-            </div>
-            <div class="md:col-span-3 md:border-l md:pl-6 border-[color:var(--color-ink)]/15">
-              <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-2">Best for</span>
-              <p class="text-sm text-[color:var(--color-ink)] leading-relaxed">{n.bestFor}</p>
-            </div>
-          </article>
-        ))
+        neighborhoods.map((n, i) => {
+          const hasDeepDive = ["downtown", "montrose", "heights", "museum-district"].includes(n.slug);
+          const Wrapper = hasDeepDive ? "a" : "article";
+          const wrapperProps = hasDeepDive ? { href: `/neighborhoods/${n.slug}` } : {};
+          return (
+            <Wrapper {...wrapperProps} class="block bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-8 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors duration-300 group">
+              <div class="md:col-span-2">
+                <span class="font-[family-name:var(--font-display)] text-5xl md:text-6xl italic text-[color:var(--color-clay)]/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div class="md:col-span-7">
+                <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2 group-hover:text-[color:var(--color-clay)] transition-colors">{n.name}</h2>
+                <p class="text-base italic text-[color:var(--color-ink-soft)] mb-4">{n.short}</p>
+                <p class="text-[color:var(--color-ink-soft)] leading-relaxed text-pretty">{n.long}</p>
+                {hasDeepDive && (
+                  <span class="mt-4 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+                    Read the full guide
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </span>
+                )}
+              </div>
+              <div class="md:col-span-3 md:border-l md:pl-6 border-[color:var(--color-ink)]/15">
+                <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-2">Best for</span>
+                <p class="text-sm text-[color:var(--color-ink)] leading-relaxed">{n.bestFor}</p>
+              </div>
+            </Wrapper>
+          );
+        })
       }
     </div>
   </section>

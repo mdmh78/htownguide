@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const sections = [
+  {
+    kicker: "What it is",
+    body: "Montrose is the closest Houston comes to a traditional walking neighborhood. The grid of tree-shaded streets between downtown and the Galleria has been the city's bohemian, queer, and artistic anchor since the 1960s — and despite gentrification pressures, it still has that character. Westheimer Road runs through the middle, lined with vintage shops, indie restaurants, dive bars, and the city's most concentrated stretch of LGBTQ+ history.",
+  },
+  {
+    kicker: "Who it's for",
+    body: "First-time visitors who want to walk between things. Couples on a long weekend. Art and design travelers. Anyone allergic to chain restaurants. Anyone who's tired of America's car-only cities and wants to feel like they're somewhere with a center.",
+  },
+];
+
+const eatDrink = [
+  { name: "Theodore Rex", note: "Justin Yu's tasting-menu restaurant. Modern, vegetable-forward, James Beard winner. Book weeks ahead." },
+  { name: "Bludorn", note: "Aaron Bludorn (ex–Cafe Boulud) brought New York polish to Houston. Reliable for a celebration dinner." },
+  { name: "Nobie's", note: "Inventive, hard to categorize, and consistently in the city's top-five conversations." },
+  { name: "Uchi", note: "Tyson Cole's modern Japanese — sushi, hot dishes, an excellent omakase. The patio is great in shoulder seasons." },
+  { name: "Hugo's", note: "Hugo Ortega's interior Mexican. Moles, Oaxacan dishes, an obligatory weekend brunch." },
+  { name: "Anvil Bar & Refuge", note: "The cocktail bar that put Houston on the national drinks map. Sit at the bar." },
+];
+
+const seeDo = [
+  { name: "The Menil Collection", note: "Free. Houstonian John de Menil's private collection turned into one of the best small museums in America. Surrealist works, Byzantine icons, ethnographic galleries — all in a beautiful Renzo Piano building." },
+  { name: "Rothko Chapel", note: "Free. Fourteen Mark Rothko paintings in a non-denominational chapel commissioned by the de Menils. Twenty minutes inside changes most people's day." },
+  { name: "The Cy Twombly Gallery", note: "Free, part of the Menil campus. Renzo Piano building dedicated to a single artist. Quietly one of the city's best rooms." },
+  { name: "Buffalo Soldiers National Museum", note: "On the Montrose / Third Ward edge. Tells the story of African American military service from the Civil War onward." },
+  { name: "Westheimer Road shopping", note: "Lower Westheimer between Bagby and Shepherd is the city's best stretch for vintage clothing, indie bookstores, and one-of-a-kind shops." },
+];
+
+const localTips = [
+  "Don't try to drive Westheimer Friday or Saturday night. Park once, walk, Uber later.",
+  "The Menil closes Mondays and Tuesdays. Plan accordingly.",
+  "Numbers Nightclub on Westheimer has been continuously operating since 1978 and is a Houston institution. Wednesdays are the legendary Classic Numbers '80s night.",
+  "Brunch in Montrose books up. Reserve Hugo's, Eight Row Flint, or Brennan's on Thursday at the latest for weekend.",
+  "The Menil's bookstore is small and excellent — better art books than most museum gift shops twice the size.",
+];
+---
+
+<BaseLayout
+  title="Montrose, Houston — A Visitor's Guide to the City's Most Walkable Neighborhood | HtownGuide"
+  description="An insider guide to Montrose, Houston's walkable, art-rich, historically queer neighborhood. The Menil Collection, Rothko Chapel, best restaurants, bars, hotels, and local tips."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <a href="/neighborhoods" class="inline-flex items-center gap-2 text-sm text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] mb-8">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All neighborhoods
+    </a>
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Neighborhood · 02</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      <em class="italic font-normal text-[color:var(--color-clay)]">Montrose.</em>
+    </h1>
+    <p class="mt-8 max-w-2xl text-xl leading-relaxed text-[color:var(--color-ink-soft)] text-pretty italic font-[family-name:var(--font-display)]">
+      Art, queer history, and a tree-shaded grid that walks easy.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-12 md:grid-cols-12">
+    {sections.map((s) => (
+      <article class="md:col-span-6">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">{s.kicker}</span>
+        <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">{s.body}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Eat & drink</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      Where Houstonians take their out-of-town friends.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {eatDrink.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">See & do</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-10 text-balance">
+      The art capital of Houston — and most of it is free.
+    </h2>
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+      {seeDo.map((p) => (
+        <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-14 md:py-16 grid gap-8 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">Local notes</span>
+        <h2 class="font-[family-name:var(--font-display)] text-3xl tracking-tight text-balance">Five things a guidebook won't tell you.</h2>
+      </div>
+      <ul class="md:col-span-8 space-y-4">
+        {localTips.map((t, i) => (
+          <li class="flex gap-4 text-base leading-relaxed">
+            <span class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-gold)] leading-none flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-[color:var(--color-paper)]/90">{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-3">
+    <a href="/neighborhoods/heights" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Next neighborhood</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">The Heights →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Restored Victorians and an indie commercial strip.</p>
+    </a>
+    <a href="/neighborhoods/downtown" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Downtown →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Stadiums, sky bars, and the seven-mile tunnel system.</p>
+    </a>
+    <a href="/neighborhoods/museum-district" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or try</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Museum District →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Nineteen museums in a walkable circle.</p>
+    </a>
+  </section>
+</BaseLayout>
