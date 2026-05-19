@@ -144,7 +144,12 @@ const tips = [
   <section class="mx-auto max-w-5xl px-6 py-12">
     <div class="space-y-px bg-[color:var(--color-ink)]/10">
       {topPicks.map((p, i) => (
-        <article class="bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-6 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors">
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + " " + p.address + " Houston")}`}
+          target="_blank"
+          rel="noopener"
+          class="block bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-6 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors group"
+        >
           <div class="md:col-span-2">
             <span class="font-[family-name:var(--font-display)] text-5xl md:text-6xl italic text-[color:var(--color-clay)]/40">
               {String(i + 1).padStart(2, "0")}
@@ -152,11 +157,15 @@ const tips = [
           </div>
           <div class="md:col-span-10">
             <div class="flex items-baseline gap-3 flex-wrap mb-2">
-              <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl tracking-tight">{p.name}</h2>
+              <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl tracking-tight group-hover:text-[color:var(--color-clay)] transition-colors">{p.name}</h2>
               <span class="text-xs uppercase tracking-[0.2em] px-3 py-1 bg-[color:var(--color-clay)]/10 text-[color:var(--color-clay)] rounded-full">{p.tier}</span>
             </div>
             <p class="text-sm italic text-[color:var(--color-ink-soft)] mb-1">{p.neighborhood}</p>
-            <p class="text-xs text-[color:var(--color-ink-soft)]/70 mb-5 uppercase tracking-[0.1em]">{p.address}</p>
+            <p class="text-xs text-[color:var(--color-ink-soft)]/70 mb-5 uppercase tracking-[0.1em] flex items-center gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {p.address}
+              <span class="text-[color:var(--color-clay)] normal-case tracking-normal ml-1">· open in Maps →</span>
+            </p>
             <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-4 text-pretty">{p.why}</p>
             <div class="grid gap-4 md:grid-cols-2 pt-4 border-t border-[color:var(--color-ink)]/10">
               <div>
@@ -169,7 +178,7 @@ const tips = [
               </div>
             </div>
           </div>
-        </article>
+        </a>
       ))}
     </div>
   </section>

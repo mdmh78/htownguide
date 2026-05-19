@@ -82,11 +82,20 @@ const categories = [
           <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
             {
               cat.picks.map((p) => (
-                <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + " Houston")}`}
+                  target="_blank"
+                  rel="noopener"
+                  class="block bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors group"
+                >
                   <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">{p.tier}</span>
-                  <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
-                  <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
-                </div>
+                  <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">{p.name}</h3>
+                  <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)] mb-3">{p.note}</p>
+                  <span class="inline-flex items-center gap-1.5 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Open in Maps →
+                  </span>
+                </a>
               ))
             }
           </div>

@@ -132,10 +132,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <style is:inline>
+    .day-btn, .interest-btn, .nh-btn, .budget-btn, .with-btn {
+      position: relative;
+    }
     .selected {
-      background-color: var(--color-ink) !important;
+      background-color: var(--color-clay) !important;
       color: var(--color-paper) !important;
-      border-color: var(--color-ink) !important;
+      border-color: var(--color-clay) !important;
+      box-shadow: 0 0 0 2px var(--color-clay), 0 0 0 4px rgba(181, 83, 42, 0.15);
     }
     #itineraryContent h2 {
       font-family: var(--font-display);
@@ -220,11 +224,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     const content = document.getElementById('itineraryContent');
 
     async function generate() {
-      if (!state.days) {
-        alert('Please choose how many days.');
+      const missing = [];
+      if (!state.days) missing.push('how many days');
+      if (state.interests.size === 0) missing.push('at least one interest');
+      if (!state.traveling_with) missing.push("who's with you");
+      if (missing.length) {
+        loadingState.classList.add('hidden');
+        output.classList.add('hidden');
+        resultSection.classList.remove('hidden');
+        errorMessage.textContent = 'Please pick ' + missing.join(', then ') + ' before we can build your trip.';
+        errorState.classList.remove('hidden');
+        resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
       submitBtn.disabled = true;
+      submitBtn.textContent = 'Building your itinerary…';
       resultSection.classList.remove('hidden');
       loadingState.classList.remove('hidden');
       errorState.classList.add('hidden');
@@ -262,6 +276,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         errorState.classList.remove('hidden');
       } finally {
         submitBtn.disabled = false;
+        submitBtn.textContent = 'Build my itinerary';
       }
     }
 
