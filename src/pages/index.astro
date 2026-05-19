@@ -1,0 +1,233 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const featured = [
+  {
+    name: "Montrose",
+    tag: "Art & nightlife",
+    desc: "Tree-lined streets, vintage bungalows, the Menil Collection, and the city's most interesting bars and queer history.",
+    href: "/neighborhoods/montrose",
+  },
+  {
+    name: "The Heights",
+    tag: "Historic walkable",
+    desc: "Restored Victorians, indie boutiques on 19th Street, and patio bars that feel like a small town inside a big city.",
+    href: "/neighborhoods/heights",
+  },
+  {
+    name: "Downtown",
+    tag: "Stadiums & sky bars",
+    desc: "Where the Astros, Rockets, and Texans play, plus rooftop cocktails, theaters, and tunnel-level lunch spots.",
+    href: "/neighborhoods/downtown",
+  },
+  {
+    name: "Museum District",
+    tag: "Culture core",
+    desc: "Nineteen museums in a one-and-a-half-mile circle. Most cost nothing. The MFAH alone takes a full afternoon.",
+    href: "/neighborhoods/museum-district",
+  },
+];
+
+const sections = [
+  {
+    kicker: "Where to stay",
+    title: "Hotels, picked the way locals would.",
+    body: "From the Hotel Icon downtown to boutique stays in the Heights and budget motels near NRG — sorted by neighborhood, vibe, and what you actually want to do.",
+    cta: "Browse hotels",
+    href: "/hotels",
+  },
+  {
+    kicker: "Where to eat",
+    title: "Tex-Mex, Viet-Cajun, BBQ, and the new wave.",
+    body: "Houston is the most diverse food city in America. We sort it by the night you're having — date, family, late, fancy, or strictly meat.",
+    cta: "See restaurants",
+    href: "/restaurants",
+  },
+  {
+    kicker: "What to do",
+    title: "Beyond the obvious.",
+    body: "Yes, Space Center and NASA. But also: bayou kayaking, the underground tunnels, free museum days, the rodeo (in season), and the bars locals actually go to.",
+    cta: "Things to do",
+    href: "/things-to-do",
+  },
+];
+---
+
+<BaseLayout
+  title="HtownGuide — The independent guide to Houston, Texas"
+  description="An evergreen, locally-edited guide to Houston: where to stay, eat, drink, and explore. Honest takes, neighborhood-first, no corporate fluff."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 pt-20 pb-24 md:pt-32 md:pb-40 grid gap-12 md:gap-16 md:grid-cols-12 items-end">
+      <div class="md:col-span-7">
+        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-6">
+          <span class="h-px w-8 bg-[color:var(--color-clay)]"></span>
+          A guide to Houston, Texas
+        </span>
+        <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-balance">
+          The city is <em class="italic font-normal text-[color:var(--color-clay)]">wider</em> than you think.
+        </h1>
+        <p class="mt-8 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+          Houston isn't built like other American cities — there's no center to start from, no single street to walk. So we built a guide that starts where you are: your neighborhood, your appetite, your day.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="/neighborhoods" class="inline-flex items-center gap-2 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3.5 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors duration-200">
+            Start with neighborhoods
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/plan" class="inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] transition-colors">
+            Plan a 1–3 day trip
+            <span class="text-[color:var(--color-clay)]">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Editorial side panel -->
+      <aside class="md:col-span-5 md:pl-6 md:border-l border-[color:var(--color-ink)]/15">
+        <div class="space-y-6 text-sm text-[color:var(--color-ink-soft)]">
+          <div>
+            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Population</span>
+            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">2.3M</span>
+            <span class="ml-2 text-xs text-[color:var(--color-ink-soft)]/60">city · 7.5M metro</span>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Languages spoken</span>
+            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">145+</span>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Avg. July high</span>
+            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">94°F</span>
+            <span class="ml-2 text-xs text-[color:var(--color-ink-soft)]/60">hot &amp; humid — plan accordingly</span>
+          </div>
+          <div class="pt-4 border-t border-[color:var(--color-ink)]/10">
+            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-2">Coming up</span>
+            <p class="text-[color:var(--color-ink)] leading-relaxed">
+              <strong class="font-medium">FIFA World Cup 2026</strong> — Houston hosts matches at NRG Stadium from June 11 to July 19. <a href="/world-cup-2026" class="text-[color:var(--color-clay)] underline decoration-1 underline-offset-4">Visiting fans, start here →</a>
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Hero bottom rule with city silhouette accent -->
+    <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-ink)]/15 to-transparent"></div>
+  </section>
+
+  <!-- FEATURED NEIGHBORHOODS -->
+  <section class="mx-auto max-w-7xl px-6 py-24">
+    <div class="flex items-end justify-between mb-12 gap-6 flex-wrap">
+      <div>
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Start here</span>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight">
+          Four neighborhoods, <br/><em class="italic font-normal">four very different Houstons.</em>
+        </h2>
+      </div>
+      <a href="/neighborhoods" class="text-sm font-medium text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] transition-colors">All neighborhoods →</a>
+    </div>
+
+    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2 lg:grid-cols-4">
+      {
+        featured.map((n, i) => (
+          <a
+            href={n.href}
+            class="group block bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors duration-300"
+          >
+            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-3">
+              {String(i + 1).padStart(2, "0")} · {n.tag}
+            </span>
+            <h3 class="font-[family-name:var(--font-display)] text-3xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">
+              {n.name}
+            </h3>
+            <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+              {n.desc}
+            </p>
+            <span class="mt-6 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+              Read the guide
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- SECTION BLOCKS -->
+  <section class="mx-auto max-w-7xl px-6 py-12 space-y-24">
+    {
+      sections.map((s, i) => (
+        <article class:list={["grid gap-10 md:gap-16 md:grid-cols-12 items-center", i % 2 === 1 && "md:[&>div:first-child]:order-2"]}>
+          <div class="md:col-span-7">
+            <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">{s.kicker}</span>
+            <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-6 text-balance">
+              {s.title}
+            </h2>
+            <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] max-w-2xl mb-8 text-pretty">
+              {s.body}
+            </p>
+            <a href={s.href} class="inline-flex items-center gap-2 text-sm font-medium border-b border-[color:var(--color-ink)] pb-1 hover:text-[color:var(--color-clay)] hover:border-[color:var(--color-clay)] transition-colors">
+              {s.cta}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="md:col-span-5">
+            <div class="aspect-[4/5] bg-gradient-to-br from-[color:var(--color-cream-deep)] via-[color:var(--color-paper)] to-[color:var(--color-cream-deep)] border border-[color:var(--color-ink)]/10 relative overflow-hidden">
+              <span class="absolute top-6 left-6 text-xs uppercase tracking-[0.25em] text-[color:var(--color-ink-soft)]/60">
+                №{String(i + 1).padStart(2, "0")}
+              </span>
+              <span class="absolute bottom-6 right-6 font-[family-name:var(--font-display)] text-7xl italic text-[color:var(--color-clay)]/30 leading-none">
+                {s.kicker.split(" ")[0]}
+              </span>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <!-- WORLD CUP STRIP -->
+  <section class="mx-auto max-w-7xl px-6 mt-24">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-16 md:py-20 grid gap-8 md:grid-cols-12 items-center">
+      <div class="md:col-span-8">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-4">Summer 2026</span>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-4 text-balance">
+          <em class="italic font-normal">Bienvenidos.</em> Welcome. <br/>The world is coming to Houston.
+        </h2>
+        <p class="text-base leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl">
+          NRG Stadium hosts seven matches between June 11 and July 19. We've put together a fan-first guide: where to stay near the stadium, which bars to pack into on match days, and how to actually get around without melting in July.
+        </p>
+      </div>
+      <div class="md:col-span-4 md:text-right">
+        <a href="/world-cup-2026" class="inline-flex items-center gap-2 bg-[color:var(--color-gold)] text-[color:var(--color-ink)] px-6 py-4 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">
+          World Cup guide
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="mx-auto max-w-3xl px-6 py-32 text-center">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">The dispatch</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-6 text-balance">
+      One short email. <em class="italic font-normal">Once a month.</em>
+    </h2>
+    <p class="text-[color:var(--color-ink-soft)] mb-8 max-w-xl mx-auto text-pretty">
+      New restaurant openings, neighborhood deep-dives, and the rare event worth crossing town for. No spam, no affiliate dump.
+    </p>
+    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Newsletter signup coming soon!');">
+      <input
+        type="email"
+        required
+        placeholder="you@example.com"
+        class="flex-1 bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/15 px-4 py-3 text-sm focus:outline-none focus:border-[color:var(--color-clay)]"
+      />
+      <button
+        type="submit"
+        class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors"
+      >
+        Subscribe
+      </button>
+    </form>
+  </section>
+</BaseLayout>

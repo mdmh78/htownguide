@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://htownguide.com/sitemap-index.xml

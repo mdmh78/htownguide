@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const categories = [
+  {
+    title: "Iconic Houston",
+    desc: "The things you'd be wrong to skip on a first visit.",
+    picks: [
+      { name: "Space Center Houston", note: "The official visitor center for NASA's Johnson Space Center. Half a day minimum. Book online to skip lines." },
+      { name: "Museum of Fine Arts, Houston (MFAH)", note: "Tenth largest art museum in the U.S. The Glassell Collection of African Gold alone is worth a visit." },
+      { name: "The Menil Collection", note: "Free. One of the best small museum experiences in America. Don't skip Rothko Chapel next door." },
+      { name: "Houston Museum of Natural Science", note: "Particularly strong in dinosaur halls, gem and mineral collection, and the Burke Baker Planetarium." },
+    ],
+  },
+  {
+    title: "Outdoors & green spaces",
+    desc: "Yes, Houston is hot. No, the city isn't a concrete grid — it has the largest urban park system in the country.",
+    picks: [
+      { name: "Buffalo Bayou Park", note: "160 acres of trails along the bayou into downtown. Rent kayaks, see the Waugh Bridge bat colony at dusk." },
+      { name: "Memorial Park", note: "Larger than Central Park. Trails, an arboretum, an eastern land bridge, and the city's best running loops." },
+      { name: "Hermann Park", note: "Adjacent to the Museum District. Japanese Garden, a lake with paddle boats, free outdoor theater in summer." },
+      { name: "Discovery Green", note: "12-acre downtown park with events, ice skating in winter, food trucks, free yoga." },
+    ],
+  },
+  {
+    title: "Free or close to it",
+    desc: "Houston quietly has more free major museums than almost any U.S. city.",
+    picks: [
+      { name: "The Menil Collection", note: "Always free." },
+      { name: "Rothko Chapel", note: "Free meditation/contemplation space with fourteen Mark Rothko paintings." },
+      { name: "Project Row Houses", note: "Free. Black art and community arts complex in the Third Ward." },
+      { name: "Asia Society Texas Center", note: "Free on Thursdays. Beautiful Yoshio Taniguchi building, rotating exhibitions." },
+      { name: "MFAH (Thursdays)", note: "Free general admission on Thursdays — special exhibitions still ticketed." },
+    ],
+  },
+  {
+    title: "With kids",
+    desc: "Houston is one of the most family-friendly U.S. cities — many of the top experiences work for any age.",
+    picks: [
+      { name: "Children's Museum Houston", note: "Consistently ranked top 1–2 children's museums in the country." },
+      { name: "Houston Zoo", note: "Inside Hermann Park. Walkable, well-shaded, strong African and Asian sections." },
+      { name: "Kemah Boardwalk", note: "30 minutes south on Galveston Bay. Rides, restaurants, an aquarium. Day-trip energy." },
+      { name: "Downtown Aquarium", note: "Indoor, white-tablecloth restaurant included. A reliable hot-day plan." },
+    ],
+  },
+  {
+    title: "Sports & events",
+    desc: "Three major-league teams, plus a few specifically Houston traditions.",
+    picks: [
+      { name: "Houston Astros (MLB)", note: "Minute Maid Park has a roof — useful in summer. Season runs April–September." },
+      { name: "Houston Rockets (NBA)", note: "Toyota Center, downtown. Season October–April." },
+      { name: "Houston Texans (NFL)", note: "NRG Stadium. Sundays in fall." },
+      { name: "Houston Dynamo & Dash (MLS / NWSL)", note: "Shell Energy Stadium, downtown. Quietly excellent atmosphere." },
+      { name: "Houston Livestock Show & Rodeo", note: "Annually late February through March. The largest livestock show and rodeo in the world." },
+    ],
+  },
+  {
+    title: "Hidden / locals' favorites",
+    desc: "The things first-time visitors miss.",
+    picks: [
+      { name: "The Beer Can House", note: "A house entirely covered in beer cans. Folk art masterpiece. Open weekends." },
+      { name: "Smither Park", note: "Mosaic public art park next to the Orange Show. Free, wildly photographable." },
+      { name: "The downtown tunnel system", note: "7 miles of underground walkways with food courts. Only open weekdays, but uniquely Houston." },
+      { name: "Waugh Drive Bat Colony", note: "Around 250,000 Mexican free-tailed bats fly out from under the bridge at sunset, year-round." },
+      { name: "Cidercade", note: "300+ arcade games, $10 entry, all you can play. A favorite for groups." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Things to Do in Houston — Attractions, Parks, and Hidden Spots | HtownGuide"
+  description="What to do in Houston: museums, parks, sports, family activities, free things, and the local favorites visitors miss. A complete Houston attractions guide."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Section 04</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      Things to <em class="italic font-normal text-[color:var(--color-clay)]">do</em>.
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      Houston rewards the curious. There's the obvious tourist circuit — Space Center, MFAH, the Astros — but the city's real character lives in the bayou trails, the strip-mall restaurants, and a quietly enormous concentration of free cultural institutions.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 space-y-20">
+    {
+      categories.map((cat, i) => (
+        <article>
+          <div class="flex items-end gap-6 mb-8 flex-wrap">
+            <span class="font-[family-name:var(--font-display)] text-6xl italic text-[color:var(--color-clay)]/40 leading-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="flex-1 min-w-[200px]">
+              <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2">{cat.title}</h2>
+              <p class="text-[color:var(--color-ink-soft)] max-w-2xl text-pretty">{cat.desc}</p>
+            </div>
+          </div>
+
+          <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+            {
+              cat.picks.map((p) => (
+                <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+                  <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+                  <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+                </div>
+              ))
+            }
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

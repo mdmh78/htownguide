@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial warm-Texas palette */
+  --color-cream: #F5EFE4;
+  --color-cream-deep: #EBE2D0;
+  --color-clay: #B5532A;
+  --color-clay-dark: #8C3B17;
+  --color-ink: #1C1814;
+  --color-ink-soft: #3A332B;
+  --color-moss: #4A5D3A;
+  --color-gold: #C8A04C;
+  --color-paper: #FFFCF5;
+
+  /* Distinctive typography - editorial serif + warm sans */
+  --font-display: "Fraunces", "DM Serif Display", Georgia, serif;
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    font-feature-settings: "ss01", "ss02";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-clay);
+    color: var(--color-paper);
+  }
+
+  /* Grain overlay for warmth */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}

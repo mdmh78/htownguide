@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const categories = [
+  {
+    title: "Downtown",
+    desc: "Close to stadiums, theaters, and the tunnel system. Best if you want to walk to dinner and a game.",
+    picks: [
+      { name: "Hotel ZaZa Memorial City", tier: "Boutique luxury", note: "Quirky, art-filled, the rare Houston hotel with real personality." },
+      { name: "The Lancaster Hotel", tier: "Historic", note: "1926 boutique on Theater District corner. Small, classic, well-located." },
+      { name: "Hyatt Regency Houston", tier: "Reliable mid-range", note: "Connected to the tunnels — useful in summer heat." },
+      { name: "Marriott Marquis Houston", tier: "Family-friendly", note: "Texas-shaped lazy river on the roof. Yes, really." },
+    ],
+  },
+  {
+    title: "Galleria / Uptown",
+    desc: "Best for shoppers, business travelers, and anyone who wants luxury without downtown's traffic.",
+    picks: [
+      { name: "The Post Oak Hotel", tier: "Five-star", note: "Houston's only Forbes Five-Star hotel. Rolls-Royce house cars. Worth a splurge night." },
+      { name: "The Westin Galleria", tier: "Connected to the mall", note: "Literally inside the Galleria. Convenient if shopping is the point." },
+      { name: "JW Marriott Houston by The Galleria", tier: "Business-class", note: "Reliable JW with strong service. Easy access to West Loop." },
+    ],
+  },
+  {
+    title: "Medical Center",
+    desc: "Pick if you're visiting MD Anderson, Memorial Hermann, Texas Children's, or any TMC institution.",
+    picks: [
+      { name: "InterContinental Houston Medical Center", tier: "Closest", note: "Skybridge into the TMC. The most convenient option for patient families." },
+      { name: "Marriott Medical Center / Museum District", tier: "Walk to TMC", note: "Newer build, big rooms. Good for longer stays." },
+      { name: "Residence Inn Houston Medical Center", tier: "Extended stay", note: "Kitchens in every room. Practical for multi-week treatment trips." },
+    ],
+  },
+  {
+    title: "Near NRG Stadium",
+    desc: "Best for World Cup 2026 visitors, Texans games, RodeoHouston, and major NRG events.",
+    picks: [
+      { name: "Hilton Houston NRG", tier: "Walking distance", note: "Closest hotel to NRG Stadium. Books up fast on match days — reserve early." },
+      { name: "Holiday Inn Houston S - NRG Area", tier: "Budget", note: "Reasonable rates within shuttle distance of NRG." },
+      { name: "AC Hotel by Marriott Houston Medical Center", tier: "Smart mid-range", note: "Short ride to NRG, walking distance to TMC. Newer property." },
+    ],
+  },
+  {
+    title: "The Heights & Montrose",
+    desc: "Pick if you want neighborhood character over high-rise convenience.",
+    picks: [
+      { name: "Heights House Hotel", tier: "Boutique", note: "Restored historic property in the Heights. The most distinctive boutique stay in Houston." },
+      { name: "La Colombe d'Or", tier: "Iconic small luxury", note: "21 suites in a 1923 Montrose mansion. Each room is themed after a painter." },
+      { name: "Hotel Indigo Houston at The Galleria", tier: "Design-forward mid-range", note: "Modern, neighborhood-aware design." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Best Hotels in Houston — Where to Stay by Neighborhood | HtownGuide"
+  description="Hotels in Houston, organized by neighborhood and trip type — downtown, Galleria, Medical Center, NRG, Heights, Montrose. Boutique, luxury, mid-range, and budget."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Section 02</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      Where to <em class="italic font-normal text-[color:var(--color-clay)]">stay</em>.
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      The single most important hotel decision in Houston isn't price tier — it's neighborhood. The city is too spread out for a "central" hotel to make sense. Pick the part of town where you'll actually spend most of your time.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 space-y-20">
+    {
+      categories.map((cat, i) => (
+        <article>
+          <div class="flex items-end gap-6 mb-8 flex-wrap">
+            <span class="font-[family-name:var(--font-display)] text-6xl italic text-[color:var(--color-clay)]/40 leading-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="flex-1 min-w-[200px]">
+              <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2">{cat.title}</h2>
+              <p class="text-[color:var(--color-ink-soft)] max-w-2xl text-pretty">{cat.desc}</p>
+            </div>
+          </div>
+
+          <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+            {
+              cat.picks.map((p) => (
+                <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+                  <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">{p.tier}</span>
+                  <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+                  <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+                </div>
+              ))
+            }
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center">
+    <p class="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-4">A note on links</p>
+    <p class="text-sm text-[color:var(--color-ink-soft)] leading-relaxed max-w-xl mx-auto">
+      When you book through a link on this site, we may earn a small commission at no extra cost to you. It keeps the lights on and the recommendations honest. We only list hotels we'd actually send a friend to.
+    </p>
+  </section>
+</BaseLayout>

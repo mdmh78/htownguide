@@ -1,0 +1,163 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "/og-default.png" } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const navItems = [
+  { href: "/neighborhoods", label: "Neighborhoods" },
+  { href: "/hotels", label: "Where to Stay" },
+  { href: "/restaurants", label: "Eat & Drink" },
+  { href: "/things-to-do", label: "Things to Do" },
+  { href: "/world-cup-2026", label: "World Cup 2026" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="relative min-h-screen">
+    <!-- Top brand bar -->
+    <header class="relative z-10 border-b border-[color:var(--color-cream-deep)]">
+      <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+        <a href="/" class="flex items-baseline gap-2 group">
+          <span
+            class="font-[family-name:var(--font-display)] text-2xl font-medium tracking-tight"
+            >Htown<span class="text-[color:var(--color-clay)]">Guide</span></span
+          >
+          <span class="hidden sm:inline text-xs uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)]/70"
+            >est. 2026</span
+          >
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class="text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] transition-colors duration-200 relative group"
+              >
+                {item.label}
+                <span class="absolute -bottom-1 left-0 w-0 h-px bg-[color:var(--color-clay)] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))
+          }
+        </nav>
+
+        <a
+          href="/plan"
+          class="hidden md:inline-flex items-center gap-2 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors duration-200"
+        >
+          Plan a trip
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2"
+          aria-label="Menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-[color:var(--color-cream-deep)] bg-[color:var(--color-paper)]">
+        <nav class="px-6 py-4 flex flex-col gap-3">
+          {
+            navItems.map((item) => (
+              <a href={item.href} class="py-2 text-[color:var(--color-ink-soft)]">{item.label}</a>
+            ))
+          }
+          <a href="/plan" class="mt-2 inline-flex items-center justify-center bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-3 text-sm font-medium">Plan a trip →</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="relative z-10">
+      <slot />
+    </main>
+
+    <footer class="relative z-10 mt-32 border-t border-[color:var(--color-cream-deep)] bg-[color:var(--color-paper)]/60">
+      <div class="mx-auto max-w-7xl px-6 py-16 grid gap-10 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <span class="font-[family-name:var(--font-display)] text-3xl font-medium"
+            >Htown<span class="text-[color:var(--color-clay)]">Guide</span></span
+          >
+          <p class="mt-4 max-w-md text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+            An independent, locally-edited guide to Houston — for first-time visitors, World Cup fans, and Houstonians who keep finding new corners of their own city.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-4">
+            Explore
+          </h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/neighborhoods" class="hover:text-[color:var(--color-clay)]">Neighborhoods</a></li>
+            <li><a href="/hotels" class="hover:text-[color:var(--color-clay)]">Hotels</a></li>
+            <li><a href="/restaurants" class="hover:text-[color:var(--color-clay)]">Restaurants</a></li>
+            <li><a href="/things-to-do" class="hover:text-[color:var(--color-clay)]">Things to Do</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-4">
+            About
+          </h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="hover:text-[color:var(--color-clay)]">Our Story</a></li>
+            <li><a href="/contact" class="hover:text-[color:var(--color-clay)]">Contact</a></li>
+            <li><a href="/disclosure" class="hover:text-[color:var(--color-clay)]">Disclosure</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-[color:var(--color-cream-deep)]">
+        <div class="mx-auto max-w-7xl px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[color:var(--color-ink-soft)]/70">
+          <span>© 2026 HtownGuide. Made in Houston.</span>
+          <span>Independent. Locally-edited. Reader-supported via affiliate links.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn?.addEventListener("click", () => {
+        menu?.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>

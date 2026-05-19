@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const categories = [
+  {
+    title: "Tex-Mex & Mexican",
+    desc: "The genre Houston arguably owns. Tex-Mex isn't Mexican food badly imitated — it's its own thing, born here.",
+    picks: [
+      { name: "Ninfa's on Navigation", note: "The original location of the restaurant credited with inventing fajitas. Order them." },
+      { name: "El Tiempo Cantina", note: "Festive, family-style Tex-Mex. Multiple locations across the city." },
+      { name: "Hugo's", note: "Hugo Ortega's interior Mexican cuisine — moles, Oaxacan dishes, an obligatory weekend brunch." },
+      { name: "Xochi", note: "Hugo's Oaxacan flagship downtown. Get the mole tasting if it's available." },
+    ],
+  },
+  {
+    title: "Viet-Cajun & Crawfish",
+    desc: "Houston has the third-largest Vietnamese population in the U.S., and Vietnamese cooks crashed crawfish boils with garlic, butter, and chiles. The result is one of the city's most distinct food traditions.",
+    picks: [
+      { name: "Crawfish & Noodles", note: "Trong Nguyen's Bellaire icon. The dish to order is exactly what the name says." },
+      { name: "BB's Tex-Orleans", note: "Crawfish boils with multiple seasoning blends. Bring napkins." },
+      { name: "Cajun Kitchen", note: "Boudin balls and étouffée done right. Strip-mall hidden gem in southwest Houston." },
+    ],
+  },
+  {
+    title: "Barbecue",
+    desc: "Texas BBQ in Houston means brisket, and the city quietly has some of the best of it — without the Austin queues.",
+    picks: [
+      { name: "Truth BBQ", note: "Leonard Botello's brisket frequently ranks among the best in Texas. Pies are also serious." },
+      { name: "Pinkerton's Barbecue", note: "Heights smokehouse with technically masterful brisket and inventive sides." },
+      { name: "Killen's Barbecue", note: "Ronnie Killen's Pearland temple of meat. Worth the drive south." },
+      { name: "Goode Company Barbeque", note: "The classic. Been here since 1977. Get the jalapeño cheese bread." },
+    ],
+  },
+  {
+    title: "Fine dining & special occasion",
+    desc: "Houston punches well above its national reputation here. James Beard winners scattered around the city.",
+    picks: [
+      { name: "Theodore Rex", note: "Justin Yu's Heights restaurant. Modern, vegetable-forward, James Beard winner." },
+      { name: "March", note: "Mediterranean tasting menu, ambitious and refined. Splurge territory." },
+      { name: "Bludorn", note: "Aaron Bludorn (formerly Cafe Boulud) brought New York polish to Montrose. Reliable for a celebration." },
+      { name: "Nobie's", note: "Inventive, hard to categorize, and consistently one of the best dining experiences in town." },
+    ],
+  },
+  {
+    title: "Casual and where locals actually go",
+    desc: "The neighborhood spots that show up in our group texts.",
+    picks: [
+      { name: "Lucille's", note: "Soul food, Southern, on the edge of the Museum District. Don't skip the chicken." },
+      { name: "Doris Metropolitan", note: "Israeli-style steakhouse. Counter-intuitive, excellent." },
+      { name: "Coltivare", note: "Heights neighborhood Italian with a backyard garden. Pizza is the move." },
+      { name: "Killen's STQ", note: "Casual Killen — burgers, brisket, pasta, all done at a higher level than they need to be." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Where to Eat in Houston — Restaurants by Genre | HtownGuide"
+  description="A real-Houstonian guide to eating in Houston: Tex-Mex, Viet-Cajun, BBQ, fine dining, and the casual neighborhood spots locals actually go to."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Section 03</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      Where to <em class="italic font-normal text-[color:var(--color-clay)]">eat</em>.
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      Houston is the most diverse big city in America, and the food scene reflects it. You can eat Tex-Mex, Viet-Cajun, Nigerian, Persian, and award-winning new-American — sometimes within the same strip mall. Below is how we'd send a visitor in.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12 space-y-20">
+    {
+      categories.map((cat, i) => (
+        <article>
+          <div class="flex items-end gap-6 mb-8 flex-wrap">
+            <span class="font-[family-name:var(--font-display)] text-6xl italic text-[color:var(--color-clay)]/40 leading-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="flex-1 min-w-[200px]">
+              <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2">{cat.title}</h2>
+              <p class="text-[color:var(--color-ink-soft)] max-w-2xl text-pretty">{cat.desc}</p>
+            </div>
+          </div>
+
+          <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2">
+            {
+              cat.picks.map((p) => (
+                <div class="bg-[color:var(--color-cream)] p-6 md:p-8 hover:bg-[color:var(--color-paper)] transition-colors">
+                  <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3">{p.name}</h3>
+                  <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{p.note}</p>
+                </div>
+              ))
+            }
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const neighborhoods = [
+  {
+    name: "Downtown",
+    slug: "downtown",
+    short: "Stadiums, sky bars, theaters, tunnels.",
+    long: "Downtown Houston works on two levels — literally. Aboveground you'll find the city's three major-league stadiums (Minute Maid for the Astros, Toyota Center for the Rockets, NRG is south but feels connected), the Theater District, and a growing crop of rooftop bars. Belowground is the seven-mile tunnel system, where most of downtown's lunch business happens on weekdays.",
+    bestFor: "Sports fans, first-timers wanting a hotel near everything, business travelers",
+  },
+  {
+    name: "Montrose",
+    slug: "montrose",
+    short: "Art, queer history, and a tree-shaded grid that walks easy.",
+    long: "Montrose is the most pedestrian-friendly neighborhood in Houston — and that's not faint praise for a city that's mostly built for cars. The Menil Collection is here (free, and easily one of the best small museums in America), as is Rothko Chapel, dozens of independent galleries, and the bars and bookstores that anchor the city's queer community. Westheimer Road between Bagby and Shepherd is the spine.",
+    bestFor: "Couples, art-leaning travelers, anyone who wants to walk between meals",
+  },
+  {
+    name: "The Heights",
+    slug: "heights",
+    short: "Restored Victorians and an indie commercial strip.",
+    long: "A few miles north of downtown, the Heights is the closest Houston gets to small-town walkable. Tree-lined streets of restored 1900s bungalows and Victorians, with 19th Street and White Oak Drive as the commercial backbones — both lined with indie boutiques, neighborhood restaurants, and bars with serious patios. Newer additions like the Heights Mercantile have added more food and shopping without losing the character.",
+    bestFor: "Slow travelers, design-curious visitors, people allergic to chain restaurants",
+  },
+  {
+    name: "Museum District",
+    slug: "museum-district",
+    short: "Nineteen museums in a one-and-a-half-mile circle.",
+    long: "Anchored by Hermann Park and the Museum of Fine Arts Houston (one of the ten largest art museums in the country), the Museum District packs in nineteen museums inside a tight, walkable radius. The MFAH alone is a full afternoon. The Houston Museum of Natural Science, the Children's Museum, the Holocaust Museum Houston, and the Asia Society Texas Center are all within blocks. Many have free days.",
+    bestFor: "Families, culture-first travelers, rainy-day plans, summer indoor escapes",
+  },
+  {
+    name: "Galleria / Uptown",
+    slug: "galleria",
+    short: "Shopping, hotels, and a skyline of its own.",
+    long: "Houston's second downtown. The Galleria mall is the obvious draw — over 400 stores anchored by Saks, Neiman Marcus, and Nordstrom — but Uptown also hosts a cluster of upscale hotels, the Water Wall (an underrated free attraction), and some of the city's most established fine-dining restaurants. Good base if you're shopping- or business-focused.",
+    bestFor: "Shoppers, luxury travelers, business trips",
+  },
+  {
+    name: "Medical Center / Rice Village",
+    slug: "medical-center",
+    short: "The world's largest medical complex, and a walkable college strip nearby.",
+    long: "The Texas Medical Center is the largest medical complex in the world — a city within the city, with over 60 institutions. If you're visiting for treatment or to support someone who is, this is your base. A short drive away, Rice Village offers a more cheerful counterpoint: a walkable grid of restaurants, bars, and shops next to Rice University's leafy campus.",
+    bestFor: "Medical visitors, families with patients, Rice-area students and visitors",
+  },
+];
+---
+
+<BaseLayout
+  title="Houston Neighborhoods — Where to stay, eat, and explore | HtownGuide"
+  description="A neighborhood-first guide to Houston: Downtown, Montrose, The Heights, Museum District, Galleria, and more. What each area is actually like, and who it suits."
+>
+  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Section 01</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
+      Houston by <em class="italic font-normal text-[color:var(--color-clay)]">neighborhood</em>.
+    </h1>
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      Houston is sprawling — 600+ square miles of mostly horizontal city — so picking the right neighborhood matters more here than in most American cities. Each one has its own character, its own restaurants, and its own answer to "what do you do here?"
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 py-12">
+    <div class="space-y-px bg-[color:var(--color-ink)]/10">
+      {
+        neighborhoods.map((n, i) => (
+          <article class="bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-8 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors duration-300">
+            <div class="md:col-span-2">
+              <span class="font-[family-name:var(--font-display)] text-5xl md:text-6xl italic text-[color:var(--color-clay)]/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <div class="md:col-span-7">
+              <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-2">{n.name}</h2>
+              <p class="text-base italic text-[color:var(--color-ink-soft)] mb-4">{n.short}</p>
+              <p class="text-[color:var(--color-ink-soft)] leading-relaxed text-pretty">{n.long}</p>
+            </div>
+            <div class="md:col-span-3 md:border-l md:pl-6 border-[color:var(--color-ink)]/15">
+              <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-2">Best for</span>
+              <p class="text-sm text-[color:var(--color-ink)] leading-relaxed">{n.bestFor}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-24 text-center">
+    <h2 class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight mb-6 text-balance">
+      Not sure which fits your trip?
+    </h2>
+    <p class="text-[color:var(--color-ink-soft)] mb-8 max-w-xl mx-auto text-pretty">
+      Tell us your dates and what you're looking for, and we'll build you a 1–3 day itinerary that picks the right neighborhood for each meal and stop.
+    </p>
+    <a href="/plan" class="inline-flex items-center gap-2 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3.5 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors">
+      Plan a trip
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </section>
+</BaseLayout>
