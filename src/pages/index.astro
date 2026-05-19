@@ -7,24 +7,32 @@ const featured = [
     tag: "Art & nightlife",
     desc: "Tree-lined streets, vintage bungalows, the Menil Collection, and the city's most interesting bars and queer history.",
     href: "/neighborhoods/montrose",
+    img: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=900&q=80&auto=format&fit=crop",
+    color: "bg-pink-500",
   },
   {
     name: "The Heights",
     tag: "Historic walkable",
     desc: "Restored Victorians, indie boutiques on 19th Street, and patio bars that feel like a small town inside a big city.",
     href: "/neighborhoods/heights",
+    img: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=80&auto=format&fit=crop",
+    color: "bg-teal-500",
   },
   {
     name: "Downtown",
     tag: "Stadiums & sky bars",
     desc: "Where the Astros, Rockets, and Texans play, plus rooftop cocktails, theaters, and tunnel-level lunch spots.",
     href: "/neighborhoods/downtown",
+    img: "https://images.unsplash.com/photo-1667754248024-e1e03e60eb72?w=900&q=80&auto=format&fit=crop",
+    color: "bg-amber-500",
   },
   {
     name: "Museum District",
     tag: "Culture core",
     desc: "Nineteen museums in a one-and-a-half-mile circle. Most cost nothing. The MFAH alone takes a full afternoon.",
     href: "/neighborhoods/museum-district",
+    img: "https://images.unsplash.com/photo-1486718448742-163732cd1544?w=900&q=80&auto=format&fit=crop",
+    color: "bg-blue-500",
   },
 ];
 
@@ -35,6 +43,7 @@ const sections = [
     body: "From the Hotel Icon downtown to boutique stays in the Heights and budget motels near NRG — sorted by neighborhood, vibe, and what you actually want to do.",
     cta: "Browse hotels",
     href: "/hotels",
+    img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000&q=80&auto=format&fit=crop",
   },
   {
     kicker: "Where to eat",
@@ -42,6 +51,7 @@ const sections = [
     body: "Houston is the most diverse food city in America. We sort it by the night you're having — date, family, late, fancy, or strictly meat. Start with our Houston BBQ deep-dive — the city has quietly become the best BBQ town in Texas.",
     cta: "Read the BBQ guide",
     href: "/houston-bbq",
+    img: "https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=1000&q=80&auto=format&fit=crop",
   },
   {
     kicker: "What to do",
@@ -49,7 +59,19 @@ const sections = [
     body: "Yes, Space Center and NASA. But also: bayou kayaking, the underground tunnels, free museum days, the rodeo (in season), and the bars locals actually go to.",
     cta: "Things to do",
     href: "/things-to-do",
+    img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1000&q=80&auto=format&fit=crop",
   },
+];
+
+const vibeGallery = [
+  { src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop", caption: "Tex-Mex on every corner" },
+  { src: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&q=80&auto=format&fit=crop", caption: "Vietnamese pho in Bellaire" },
+  { src: "https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&q=80&auto=format&fit=crop", caption: "Mural city — Montrose" },
+  { src: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&q=80&auto=format&fit=crop", caption: "Rooftop cocktails" },
+  { src: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=600&q=80&auto=format&fit=crop", caption: "Live music nights" },
+  { src: "https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80&auto=format&fit=crop", caption: "World Cup summer" },
+  { src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop", caption: "Fine-dining capital" },
+  { src: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=600&q=80&auto=format&fit=crop", caption: "Sunset skyline" },
 ];
 ---
 
@@ -58,76 +80,93 @@ const sections = [
   description="An evergreen, locally-edited guide to Houston: where to stay, eat, drink, and explore. Honest takes, neighborhood-first, no corporate fluff."
 >
   <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="mx-auto max-w-7xl px-6 pt-20 pb-24 md:pt-32 md:pb-40 grid gap-12 md:gap-16 md:grid-cols-12 items-end">
-      <div class="md:col-span-7">
-        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-6">
+  <section class="relative overflow-hidden bg-houston-glow">
+    <!-- Decorative color blobs -->
+    <div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[color:var(--color-clay)] opacity-15 blur-3xl"></div>
+    <div class="absolute top-1/2 -left-32 w-80 h-80 rounded-full bg-[color:var(--color-teal)] opacity-15 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid gap-10 md:gap-14 md:grid-cols-12 items-center">
+      <div class="md:col-span-6">
+        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-6 font-semibold">
           <span class="h-px w-8 bg-[color:var(--color-clay)]"></span>
-          A guide to Houston, Texas
+          The independent guide to Houston
         </span>
         <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight text-balance">
-          The city is <em class="italic font-normal text-[color:var(--color-clay)]">wider</em> than you think.
+          The city is <em class="italic font-normal text-[color:var(--color-clay)]">wider</em>, weirder, and <em class="italic font-normal text-[color:var(--color-teal)]">more fun</em> than you think.
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
-          Houston isn't built like other American cities — there's no center to start from, no single street to walk. So we built a guide that starts where you are: your neighborhood, your appetite, your day.
+          Tacos at 2 AM. Free museums. Rooftop bars. Brisket worth a flight. Murals on every block in Montrose. World Cup matches this summer. Start where you are — your neighborhood, your appetite, your day.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
-          <a href="/neighborhoods" class="inline-flex items-center gap-2 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3.5 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors duration-200">
-            Start with neighborhoods
+          <a href="/neighborhoods" class="inline-flex items-center gap-2 bg-[color:var(--color-clay)] text-[color:var(--color-paper)] px-7 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-[color:var(--color-clay-dark)] transition-colors shadow-lg shadow-[color:var(--color-clay)]/30">
+            Explore neighborhoods
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="/plan" class="inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] transition-colors">
-            Plan a 1–3 day trip
-            <span class="text-[color:var(--color-clay)]">→</span>
+          <a href="/plan" class="inline-flex items-center gap-2 bg-[color:var(--color-teal)] text-[color:var(--color-paper)] px-7 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-[color:var(--color-teal-deep)] transition-colors shadow-lg shadow-[color:var(--color-teal)]/30">
+            Plan my trip ✨
           </a>
         </div>
       </div>
 
-      <!-- Editorial side panel -->
-      <aside class="md:col-span-5 md:pl-6 md:border-l border-[color:var(--color-ink)]/15">
-        <div class="space-y-6 text-sm text-[color:var(--color-ink-soft)]">
-          <div>
-            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Population</span>
-            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">2.3M</span>
-            <span class="ml-2 text-xs text-[color:var(--color-ink-soft)]/60">city · 7.5M metro</span>
+      <!-- Photo collage -->
+      <div class="md:col-span-6">
+        <div class="grid grid-cols-3 grid-rows-3 gap-3 h-[520px] md:h-[600px]">
+          <figure class="col-span-2 row-span-2 relative overflow-hidden rounded-2xl shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1667754248024-e1e03e60eb72?w=900&q=80&auto=format&fit=crop" alt="Houston downtown skyline at dusk" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <figcaption class="absolute bottom-4 left-4 text-white text-sm font-[family-name:var(--font-display)] italic">Skyline at golden hour</figcaption>
+          </figure>
+          <figure class="relative overflow-hidden rounded-2xl shadow-lg">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=80&auto=format&fit=crop" alt="Tacos on a plate" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+          </figure>
+          <figure class="relative overflow-hidden rounded-2xl shadow-lg bg-[color:var(--color-clay)]">
+            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=400&q=80&auto=format&fit=crop" alt="Sliced brisket" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          </figure>
+          <figure class="col-span-2 relative overflow-hidden rounded-2xl shadow-lg">
+            <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&q=80&auto=format&fit=crop" alt="Colorful murals in Montrose" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            <figcaption class="absolute bottom-3 left-4 text-white text-xs font-semibold uppercase tracking-wider">Montrose murals</figcaption>
+          </figure>
+          <figure class="relative overflow-hidden rounded-2xl shadow-lg">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80&auto=format&fit=crop" alt="Cocktails at a Houston rooftop bar" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+          </figure>
+        </div>
+
+        <!-- Floating stat callouts -->
+        <div class="grid grid-cols-3 gap-3 mt-6">
+          <div class="text-center px-3 py-3 bg-[color:var(--color-paper)] rounded-xl shadow border border-[color:var(--color-ink)]/5">
+            <div class="font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-clay)]">145+</div>
+            <div class="text-[10px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/70">Languages</div>
           </div>
-          <div>
-            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Languages spoken</span>
-            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">145+</span>
+          <div class="text-center px-3 py-3 bg-[color:var(--color-paper)] rounded-xl shadow border border-[color:var(--color-ink)]/5">
+            <div class="font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-teal)]">19</div>
+            <div class="text-[10px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/70">Museums</div>
           </div>
-          <div>
-            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-1">Avg. July high</span>
-            <span class="font-[family-name:var(--font-display)] text-3xl text-[color:var(--color-ink)]">94°F</span>
-            <span class="ml-2 text-xs text-[color:var(--color-ink-soft)]/60">hot &amp; humid — plan accordingly</span>
-          </div>
-          <div class="pt-4 border-t border-[color:var(--color-ink)]/10">
-            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-2">Coming up</span>
-            <p class="text-[color:var(--color-ink)] leading-relaxed">
-              <strong class="font-medium">FIFA World Cup 2026</strong> — Houston hosts matches at NRG Stadium from June 11 to July 19. <a href="/world-cup-2026" class="text-[color:var(--color-clay)] underline decoration-1 underline-offset-4">Visiting fans, start here →</a>
-            </p>
+          <div class="text-center px-3 py-3 bg-[color:var(--color-paper)] rounded-xl shadow border border-[color:var(--color-ink)]/5">
+            <div class="font-[family-name:var(--font-display)] text-2xl text-[color:var(--color-gold)]">7</div>
+            <div class="text-[10px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/70">World Cup matches</div>
           </div>
         </div>
-      </aside>
+      </div>
     </div>
-
-    <!-- Hero bottom rule with city silhouette accent -->
-    <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-ink)]/15 to-transparent"></div>
   </section>
 
-  <!-- HERO IMAGE -->
-  <section class="relative">
-    <div class="mx-auto max-w-7xl px-6">
-      <figure class="relative">
-        <img
-          src="https://images.unsplash.com/photo-1667754248024-e1e03e60eb72?w=1800&q=80&auto=format&fit=crop"
-          alt="Downtown Houston skyline at night, with orange and blue Astros lighting"
-          loading="lazy"
-          class="w-full h-[55vh] md:h-[65vh] object-cover"
-        />
-        <figcaption class="absolute bottom-0 right-0 px-4 py-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-paper)] bg-[color:var(--color-ink)]/60">
-          Downtown · Houston Skyline
-        </figcaption>
-      </figure>
+  <!-- VIBES GALLERY (color marquee) -->
+  <section class="py-16 bg-[color:var(--color-cream-deep)] overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 mb-8">
+      <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3 font-semibold">A taste of Houston</span>
+      <h2 class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight text-balance">
+        <em class="italic font-normal">Eight reasons</em> you'll keep coming back.
+      </h2>
+    </div>
+    <div class="flex gap-4 overflow-x-auto pb-6 px-6 snap-x scroll-px-6">
+      {vibeGallery.map((v) => (
+        <figure class="flex-shrink-0 w-72 h-80 relative rounded-2xl overflow-hidden shadow-lg snap-start group">
+          <img src={v.src} alt={v.caption} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <figcaption class="absolute bottom-5 left-5 right-5 text-white text-lg font-[family-name:var(--font-display)] italic leading-tight">{v.caption}</figcaption>
+        </figure>
+      ))}
     </div>
   </section>
 
@@ -135,67 +174,63 @@ const sections = [
   <section class="mx-auto max-w-7xl px-6 py-24">
     <div class="flex items-end justify-between mb-12 gap-6 flex-wrap">
       <div>
-        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Start here</span>
-        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight">
-          Four neighborhoods, <br/><em class="italic font-normal">four very different Houstons.</em>
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3 font-semibold">Start here</span>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight text-balance">
+          Four neighborhoods, <br/><em class="italic font-normal text-[color:var(--color-teal)]">four very different Houstons.</em>
         </h2>
       </div>
-      <a href="/neighborhoods" class="text-sm font-medium text-[color:var(--color-ink-soft)] hover:text-[color:var(--color-clay)] transition-colors">All neighborhoods →</a>
+      <a href="/neighborhoods" class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-clay)] hover:text-[color:var(--color-clay-dark)] transition-colors">All neighborhoods →</a>
     </div>
 
-    <div class="grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       {
-        featured.map((n, i) => (
-          <a
-            href={n.href}
-            class="group block bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors duration-300"
-          >
-            <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-3">
-              {String(i + 1).padStart(2, "0")} · {n.tag}
-            </span>
-            <h3 class="font-[family-name:var(--font-display)] text-3xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">
-              {n.name}
-            </h3>
-            <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
-              {n.desc}
-            </p>
-            <span class="mt-6 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
-              Read the guide
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        ))
+        featured.map((n, i) => {
+          const accents = ["text-[color:var(--color-pink)]", "text-[color:var(--color-teal)]", "text-[color:var(--color-clay)]", "text-[color:var(--color-gold)]"];
+          return (
+            <a href={n.href} class="group block rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-[color:var(--color-paper)]">
+              <figure class="relative h-56 overflow-hidden">
+                <img src={n.img} alt={`${n.name} Houston`} loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <span class={`absolute top-4 left-4 text-[10px] uppercase tracking-[0.2em] font-bold text-white bg-black/40 backdrop-blur px-3 py-1 rounded-full`}>{n.tag}</span>
+                <h3 class="absolute bottom-4 left-5 right-5 font-[family-name:var(--font-display)] text-3xl text-white drop-shadow-lg">{n.name}</h3>
+              </figure>
+              <div class="p-6">
+                <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{n.desc}</p>
+                <span class={`mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] ${accents[i]}`}>
+                  Read the guide
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          );
+        })
       }
     </div>
   </section>
 
-  <!-- SECTION BLOCKS -->
+  <!-- SECTION BLOCKS with real photos -->
   <section class="mx-auto max-w-7xl px-6 py-12 space-y-24">
     {
       sections.map((s, i) => (
         <article class:list={["grid gap-10 md:gap-16 md:grid-cols-12 items-center", i % 2 === 1 && "md:[&>div:first-child]:order-2"]}>
-          <div class="md:col-span-7">
-            <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">{s.kicker}</span>
+          <div class="md:col-span-6">
+            <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4 font-semibold">{s.kicker}</span>
             <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-6 text-balance">
               {s.title}
             </h2>
             <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] max-w-2xl mb-8 text-pretty">
               {s.body}
             </p>
-            <a href={s.href} class="inline-flex items-center gap-2 text-sm font-medium border-b border-[color:var(--color-ink)] pb-1 hover:text-[color:var(--color-clay)] hover:border-[color:var(--color-clay)] transition-colors">
+            <a href={s.href} class="inline-flex items-center gap-2 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-[color:var(--color-clay)] transition-colors rounded-full">
               {s.cta}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
           </div>
-          <div class="md:col-span-5">
-            <div class="aspect-[4/5] bg-gradient-to-br from-[color:var(--color-cream-deep)] via-[color:var(--color-paper)] to-[color:var(--color-cream-deep)] border border-[color:var(--color-ink)]/10 relative overflow-hidden">
-              <span class="absolute top-6 left-6 text-xs uppercase tracking-[0.25em] text-[color:var(--color-ink-soft)]/60">
-                №{String(i + 1).padStart(2, "0")}
-              </span>
-              <span class="absolute bottom-6 right-6 font-[family-name:var(--font-display)] text-7xl italic text-[color:var(--color-clay)]/30 leading-none">
-                {s.kicker.split(" ")[0]}
-              </span>
-            </div>
+          <div class="md:col-span-6">
+            <figure class="aspect-[4/5] md:aspect-[5/6] rounded-3xl overflow-hidden shadow-2xl relative">
+              <img src={s.img} alt={s.title} loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+              <div class="absolute inset-0 ring-1 ring-inset ring-black/5"></div>
+            </figure>
           </div>
         </article>
       ))
@@ -204,20 +239,21 @@ const sections = [
 
   <!-- WORLD CUP STRIP -->
   <section class="mx-auto max-w-7xl px-6 mt-24">
-    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-16 md:py-20 grid gap-8 md:grid-cols-12 items-center">
-      <div class="md:col-span-8">
-        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-4">Summer 2026</span>
+    <div class="bg-sunset text-white px-8 md:px-16 py-16 md:py-20 grid gap-8 md:grid-cols-12 items-center rounded-3xl shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
+      <div class="md:col-span-8 relative">
+        <span class="block text-xs uppercase tracking-[0.25em] text-white/90 mb-4 font-bold">Summer 2026</span>
         <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-4 text-balance">
-          <em class="italic font-normal">Bienvenidos.</em> Welcome. <br/>The world is coming to Houston.
+          <em class="italic font-normal">¡Bienvenidos!</em> Welcome. <br/>The world is coming to Houston.
         </h2>
-        <p class="text-base leading-relaxed text-[color:var(--color-paper)]/80 max-w-2xl">
+        <p class="text-base leading-relaxed text-white/90 max-w-2xl">
           NRG Stadium hosts seven matches between June 11 and July 19. We've put together a fan-first guide: where to stay near the stadium, which bars to pack into on match days, and how to actually get around without melting in July.
         </p>
       </div>
-      <div class="md:col-span-4 md:text-right">
-        <a href="/world-cup-2026" class="inline-flex items-center gap-2 bg-[color:var(--color-gold)] text-[color:var(--color-ink)] px-6 py-4 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">
+      <div class="md:col-span-4 md:text-right relative">
+        <a href="/world-cup-2026" class="inline-flex items-center gap-2 bg-white text-[color:var(--color-clay-dark)] px-7 py-4 text-sm font-bold uppercase tracking-wider hover:bg-[color:var(--color-ink)] hover:text-white transition-colors rounded-full">
           World Cup guide
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
@@ -225,11 +261,11 @@ const sections = [
 
   <!-- ESSENTIALS PROMO -->
   <section class="mx-auto max-w-7xl px-6 py-20">
-    <a href="/houston-essentials" class="block bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-10 md:p-14 hover:bg-[color:var(--color-cream-deep)] transition-colors group">
+    <a href="/houston-essentials" class="block bg-[color:var(--color-paper)] border-2 border-[color:var(--color-teal)]/30 p-10 md:p-14 hover:bg-[color:var(--color-teal)]/5 hover:border-[color:var(--color-teal)] transition-colors group rounded-3xl">
       <div class="grid gap-8 md:grid-cols-12 items-center">
         <div class="md:col-span-8">
-          <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Before you come</span>
-          <h2 class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight mb-4 group-hover:text-[color:var(--color-clay)] transition-colors text-balance">
+          <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-teal)] mb-3 font-semibold">Before you come</span>
+          <h2 class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight mb-4 group-hover:text-[color:var(--color-teal)] transition-colors text-balance">
             Books to read, gear to pack.
           </h2>
           <p class="text-[color:var(--color-ink-soft)] text-pretty">
@@ -237,9 +273,9 @@ const sections = [
           </p>
         </div>
         <div class="md:col-span-4 md:text-right">
-          <span class="inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+          <span class="inline-flex items-center gap-2 text-sm font-bold text-[color:var(--color-teal)] uppercase tracking-[0.15em]">
             Read the list
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
         </div>
       </div>
@@ -248,9 +284,9 @@ const sections = [
 
   <!-- NEWSLETTER -->
   <section class="mx-auto max-w-3xl px-6 py-32 text-center">
-    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">The dispatch</span>
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4 font-semibold">The dispatch</span>
     <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl tracking-tight mb-6 text-balance">
-      One short email. <em class="italic font-normal">Once a month.</em>
+      One short email. <em class="italic font-normal text-[color:var(--color-teal)]">Once a month.</em>
     </h2>
     <p class="text-[color:var(--color-ink-soft)] mb-8 max-w-xl mx-auto text-pretty">
       New restaurant openings, neighborhood deep-dives, and the rare event worth crossing town for. No spam, no affiliate dump.
@@ -263,11 +299,11 @@ const sections = [
         name="email"
         required
         placeholder="you@example.com"
-        class="flex-1 bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/15 px-4 py-3 text-sm focus:outline-none focus:border-[color:var(--color-clay)]"
+        class="flex-1 bg-[color:var(--color-paper)] border-2 border-[color:var(--color-ink)]/15 px-5 py-3 text-sm focus:outline-none focus:border-[color:var(--color-clay)] rounded-full"
       />
       <button
         type="submit"
-        class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-6 py-3 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors"
+        class="bg-[color:var(--color-clay)] text-[color:var(--color-paper)] px-7 py-3 text-sm font-bold uppercase tracking-wider hover:bg-[color:var(--color-clay-dark)] transition-colors rounded-full"
       >
         Subscribe
       </button>

@@ -55,12 +55,23 @@ const categories = [
   title="Best Hotels in Houston — Where to Stay by Neighborhood | HtownGuide"
   description="Hotels in Houston, organized by neighborhood and trip type — downtown, Galleria, Medical Center, NRG, Heights, Montrose. Boutique, luxury, mid-range, and budget."
 >
-  <section class="mx-auto max-w-7xl px-6 pt-20 pb-12">
-    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Section 02</span>
-    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] max-w-4xl text-balance">
-      Where to <em class="italic font-normal text-[color:var(--color-clay)]">stay</em>.
-    </h1>
-    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+  <section class="relative">
+    <figure class="relative h-[50vh] md:h-[60vh] overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1800&q=80&auto=format&fit=crop" alt="Hotel suite at sunset" loading="eager" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 px-6 pb-12 md:pb-16">
+        <div class="mx-auto max-w-7xl">
+          <span class="inline-block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-4 font-semibold bg-black/30 backdrop-blur px-3 py-1 rounded-full">Where to stay</span>
+          <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] text-white drop-shadow-2xl">
+            Where to <em class="italic font-normal text-[color:var(--color-gold)]">stay</em>.
+          </h1>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-6 pt-12 pb-8">
+    <p class="max-w-2xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
       The single most important hotel decision in Houston isn't price tier — it's neighborhood. The city is too spread out for a "central" hotel to make sense. Pick the part of town where you'll actually spend most of your time.
     </p>
   </section>

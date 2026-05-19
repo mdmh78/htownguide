@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Editorial warm-Texas palette */
-  --color-cream: #F5EFE4;
-  --color-cream-deep: #EBE2D0;
-  --color-clay: #B5532A;
-  --color-clay-dark: #8C3B17;
+  /* Joyful Houston palette — warmer, brighter, more energetic */
+  --color-cream: #FAF4E8;
+  --color-cream-deep: #F0E5D0;
+  --color-clay: #E26B3A;       /* brighter sunset orange */
+  --color-clay-dark: #C44A1C;
   --color-ink: #1C1814;
   --color-ink-soft: #3A332B;
+  --color-teal: #1B9AAA;       /* NEW: bright Caribbean teal */
+  --color-teal-deep: #137383;
+  --color-pink: #F26B7A;       /* NEW: sunset pink */
+  --color-gold: #F5B331;       /* brighter, warmer gold */
   --color-moss: #4A5D3A;
-  --color-gold: #C8A04C;
   --color-paper: #FFFCF5;
+  --color-sky: #88C9E0;        /* NEW: pale sky blue */
 
   /* Distinctive typography - editorial serif + warm sans */
   --font-display: "Fraunces", "DM Serif Display", Georgia, serif;
@@ -43,14 +47,14 @@
     color: var(--color-paper);
   }
 
-  /* Grain overlay for warmth */
+  /* Subtle grain overlay for warmth */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.035;
+    opacity: 0.025;
     background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 }
@@ -58,4 +62,15 @@
 @layer utilities {
   .text-balance { text-wrap: balance; }
   .text-pretty { text-wrap: pretty; }
+
+  /* Joyful gradient utilities */
+  .bg-sunset {
+    background: linear-gradient(135deg, #F26B7A 0%, #E26B3A 50%, #F5B331 100%);
+  }
+  .bg-bayou {
+    background: linear-gradient(135deg, #1B9AAA 0%, #137383 100%);
+  }
+  .bg-houston-glow {
+    background: linear-gradient(180deg, #FAF4E8 0%, #F0E5D0 100%);
+  }
 }
