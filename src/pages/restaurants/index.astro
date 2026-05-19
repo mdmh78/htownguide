@@ -68,6 +68,29 @@ const categories = [
     </p>
   </section>
 
+  <!-- BBQ DEEP-DIVE PROMO -->
+  <section class="mx-auto max-w-7xl px-6 py-12">
+    <a href="/houston-bbq" class="block bg-[color:var(--color-ink)] text-[color:var(--color-paper)] p-10 md:p-14 hover:bg-[color:var(--color-clay)] transition-colors group">
+      <div class="grid gap-8 md:grid-cols-12 items-center">
+        <div class="md:col-span-9">
+          <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">Deep dive</span>
+          <h2 class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl tracking-tight mb-4 text-balance">
+            <em class="italic font-normal">Houston BBQ, ranked.</em>
+          </h2>
+          <p class="text-[color:var(--color-paper)]/80 text-pretty">
+            The 7 smokehouses worth your stomach space — Truth, Pinkerton's, The Pit Room, Killen's, and three old-school joints. Where to go, what to order, how to skip the line.
+          </p>
+        </div>
+        <div class="md:col-span-3 md:text-right">
+          <span class="inline-flex items-center gap-2 text-sm font-medium text-[color:var(--color-gold)] uppercase tracking-[0.15em]">
+            Read it
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </div>
+    </a>
+  </section>
+
   <section class="mx-auto max-w-7xl px-6 py-12 space-y-20">
     {
       categories.map((cat, i) => (
@@ -95,5 +118,36 @@ const categories = [
         </article>
       ))
     }
+  </section>
+
+  <!-- COOKBOOK SHELF -->
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Take it home</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-3 text-balance">Cookbooks from Houston's best.</h2>
+    <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-10 text-pretty">
+      Want to chase the Houston food scene at home? Start with the people who built it.
+    </p>
+    <div class="space-y-6">
+      {[
+        { title: "Hugo Ortega's Street Food of Mexico", author: "Hugo Ortega · Hugo's, Xochi", why: "Houston's Mexican food laureate translates his restaurant menus into a home kitchen. Mole, tamales, antojitos.", asin: "1419742183" },
+        { title: "The Pho Cookbook: Easy to Adventurous Recipes for Vietnam's Favorite Soup and Noodles", author: "Andrea Nguyen", why: "Houston has the country's third-largest Vietnamese community. This is the book to understand the pho you're eating in Bellaire.", asin: "0399578331" },
+        { title: "Tex-Mex: Traditions, Innovations, and Comfort Foods from Both Sides of the Border", author: "Ford Fry", why: "An honest, deeply-researched look at the genre Houston arguably invented. Recipes from a chef who gets it.", asin: "0399582312" },
+      ].map((it) => (
+        <a
+          href={`https://www.amazon.com/dp/${it.asin}?tag=htownguide20-20`}
+          target="_blank"
+          rel="noopener nofollow sponsored"
+          class="block bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-6 hover:bg-[color:var(--color-cream-deep)] transition-colors group"
+        >
+          <span class="block text-xs uppercase tracking-[0.18em] text-[color:var(--color-clay)] mb-2">{it.author}</span>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">{it.title}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{it.why}</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+            View on Amazon
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
   </section>
 </BaseLayout>

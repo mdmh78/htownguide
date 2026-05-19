@@ -1,0 +1,240 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const TAG = "htownguide20-20";
+const amzn = (asin: string) => `https://www.amazon.com/dp/${asin}?tag=${TAG}`;
+
+const topPicks = [
+  {
+    name: "Truth BBQ",
+    neighborhood: "Heights / Washington Ave",
+    address: "110 S Heights Blvd",
+    order: "Brisket (fatty), pork ribs, jalapeño-cheddar sausage, peach cobbler",
+    why: "Leonard Botello IV's central Texas-style smokehouse is the city's reigning brisket champion. Texas Monthly placed Truth on its all-time top-10. Get there by 11:30 AM weekends or expect to wait — and prepare for them to sell out by 2 PM.",
+    waitTip: "Sells out daily. Weekends bring 1-2 hour waits. Online pre-order saves your spot.",
+    tier: "Pilgrimage",
+  },
+  {
+    name: "Pinkerton's Barbecue",
+    neighborhood: "Heights",
+    address: "1504 Airline Dr",
+    order: "Brisket, beef rib (when available), beef belly burnt ends, mac & cheese",
+    why: "Grant Pinkerton trained at Franklin in Austin and brought that obsessive technique to Houston. Smaller and friendlier than the pilgrimage spots — you can usually walk in on a weekday lunch.",
+    waitTip: "Weekday lunch under 30 min. Weekend brisket gone by 1 PM.",
+    tier: "Pilgrimage",
+  },
+  {
+    name: "The Pit Room",
+    neighborhood: "Montrose",
+    address: "1201 Richmond Ave",
+    order: "Pork ribs, brisket tacos (the move), the BBQ nachos",
+    why: "The Pit Room makes their own tortillas in-house and uses them brilliantly with brisket and barbacoa. Open later than most Houston BBQ spots — you can actually get smoked meat for dinner.",
+    waitTip: "Open until 10 PM, which is unheard of in Texas BBQ. No reservations.",
+    tier: "Reliable",
+  },
+  {
+    name: "Killen's Barbecue",
+    neighborhood: "Pearland (south of Houston)",
+    address: "3613 E Broadway St, Pearland",
+    order: "Beef rib, brisket, creamed corn",
+    why: "Ronnie Killen's barbecue empire is worth the 25-minute drive from downtown. The beef ribs are legendary and the creamed corn is a stand-alone reason to come.",
+    waitTip: "Closed Mondays. Weekends are aggressive — get there at 10:30 AM for an 11 AM opening.",
+    tier: "Pilgrimage",
+  },
+  {
+    name: "Ray's BBQ Shack",
+    neighborhood: "Acres Homes (NW Houston)",
+    address: "3929 Old Spanish Trl",
+    order: "Beef ribs, links, pulled pork sandwich",
+    why: "Ray Busch has been at this since 1995, before the Houston BBQ renaissance. East Texas style — sweeter sauce, smokier wood, more old-school. The Texas Monthly Top 50 has acknowledged Ray's for years.",
+    waitTip: "Lunch-only most days. Cash welcomed (cards too).",
+    tier: "Old school",
+  },
+  {
+    name: "Gatlin's BBQ",
+    neighborhood: "Heights / Independence Heights",
+    address: "3510 Ella Blvd",
+    order: "Brisket, dirty rice, banana pudding",
+    why: "One of Houston's pioneering Black-owned BBQ joints. The Gatlin family has been smoking since 2010 with a softer, sweeter Houston-style approach (think more sauce, more sides). Their dirty rice is a regional masterpiece.",
+    waitTip: "Closed Sundays and Mondays. Lines reasonable on weekdays.",
+    tier: "Reliable",
+  },
+  {
+    name: "Burns Original BBQ",
+    neighborhood: "Acres Homes (NW Houston)",
+    address: "8307 De Priest St",
+    order: "Beef rib, hot links, sweet potato pie",
+    why: "Roy Burns Jr. has been smoking East Texas-style BBQ on the same spot for 50+ years. This is what Houston BBQ tasted like before the Austin-influenced renaissance. Smaller portions, soulful flavor, no fuss.",
+    waitTip: "Closes early. Wednesday-Sunday only. Get there before 4 PM to be safe.",
+    tier: "Old school",
+  },
+];
+
+const gear = [
+  {
+    title: "Aaron Franklin's Meat Smoking Manifesto",
+    author: "Aaron Franklin",
+    why: "The most influential BBQ book of the last decade. Franklin (of Franklin Barbecue, Austin) explains why Texas BBQ is what it is. If you want to understand what you're tasting, start here.",
+    asin: "1607748940",
+  },
+  {
+    title: "Texas BBQ: Stories, Recipes, and Photos from the Heart",
+    author: "Wyatt McSpadden",
+    why: "Coffee-table photography book of legendary Texas BBQ joints. Beautiful photography of the smokehouses, pit masters, and the meat itself.",
+    asin: "0292745826",
+  },
+  {
+    title: "Insulated brisket-carrying tote",
+    author: "Pit Boss",
+    why: "If you're taking BBQ to-go for a hotel room, picnic, or another event, this keeps brisket at temperature for hours. Brisket cools fast and loses texture when reheated.",
+    asin: "B07YTM6CCD",
+  },
+];
+
+const tips = [
+  "Lines move faster than they look. Texas BBQ is a counter operation — they slice as you order, by the half-pound or pound. Once you're 5 people from the front, it goes quick.",
+  "Order by the pound, not the plate. A 'plate' is for individuals. If you're with 2-3 people, order half a pound of brisket, half a pound of ribs, sausage by the link, and two sides. Way more economical.",
+  "'Fatty' or 'lean' brisket — pick fatty. Lean brisket dries out within minutes of slicing. Fatty has the bark, the moisture, and the flavor. Real BBQ people order fatty.",
+  "Sides matter. Houston BBQ sides are often elevated — try the brisket-rice at Killen's, the dirty rice at Gatlin's, the creamed corn at Killen's, jalapeño-cheddar sausage everywhere it exists.",
+  "Bring cash for tips. Many BBQ joints are family-owned and the tip culture is strong. Cash to the pit master earns smiles and possibly an extra piece of bark.",
+  "BBQ for dinner is hard. Almost every serious Houston BBQ spot sells out by mid-afternoon. The Pit Room (Montrose) is the rare exception — open till 10 PM. For dinner BBQ, that's your spot.",
+];
+---
+
+<BaseLayout
+  title="Houston BBQ Guide — The 7 Best Smokehouses, Ranked | HtownGuide"
+  description="The definitive guide to Houston BBQ. Where to eat brisket, beef ribs, and pulled pork in Houston — from Truth BBQ to Pinkerton's to Burns Original. Local-tested. Updated for 2026."
+  image="/og-bbq.png"
+>
+  <!-- Hero -->
+  <section class="relative">
+    <figure class="relative">
+      <img
+        src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=1800&q=80&auto=format&fit=crop"
+        alt="Sliced Texas-style smoked brisket on butcher paper"
+        loading="eager"
+        class="w-full h-[50vh] md:h-[60vh] object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/70 via-[color:var(--color-ink)]/20 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 px-6 pb-12 md:pb-16">
+        <div class="mx-auto max-w-7xl">
+          <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-4">Deep dive · Food</span>
+          <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] text-[color:var(--color-paper)] max-w-4xl text-balance">
+            Houston <em class="italic font-normal text-[color:var(--color-gold)]">BBQ</em>, ranked.
+          </h1>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- Intro -->
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <p class="text-xl leading-relaxed text-[color:var(--color-ink-soft)] text-pretty mb-8 italic font-[family-name:var(--font-display)]">
+      Houston barbecue is having a moment, and Austin people will quietly tell you it's no longer obvious that their city is the better BBQ town.
+    </p>
+    <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty mb-6">
+      For decades, Houston was an East Texas BBQ town — sweeter sauces, smokier wood, Black-owned smokehouses serving the city's Third Ward and Acres Homes neighborhoods. Then in the 2010s, the Central Texas school (Franklin in Austin, Snow's in Lexington) reset the national standard, and a new generation of Houston pit masters started applying that obsessive Central Texas technique to the city's smokier, more diverse traditions.
+    </p>
+    <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] text-pretty">
+      The result, as of 2026, is the most exciting BBQ city in Texas. Here's where to eat it, in order.
+    </p>
+  </section>
+
+  <!-- Picks -->
+  <section class="mx-auto max-w-5xl px-6 py-12">
+    <div class="space-y-px bg-[color:var(--color-ink)]/10">
+      {topPicks.map((p, i) => (
+        <article class="bg-[color:var(--color-cream)] p-8 md:p-12 grid gap-6 md:grid-cols-12 hover:bg-[color:var(--color-paper)] transition-colors">
+          <div class="md:col-span-2">
+            <span class="font-[family-name:var(--font-display)] text-5xl md:text-6xl italic text-[color:var(--color-clay)]/40">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+          </div>
+          <div class="md:col-span-10">
+            <div class="flex items-baseline gap-3 flex-wrap mb-2">
+              <h2 class="font-[family-name:var(--font-display)] text-3xl md:text-4xl tracking-tight">{p.name}</h2>
+              <span class="text-xs uppercase tracking-[0.2em] px-3 py-1 bg-[color:var(--color-clay)]/10 text-[color:var(--color-clay)] rounded-full">{p.tier}</span>
+            </div>
+            <p class="text-sm italic text-[color:var(--color-ink-soft)] mb-1">{p.neighborhood}</p>
+            <p class="text-xs text-[color:var(--color-ink-soft)]/70 mb-5 uppercase tracking-[0.1em]">{p.address}</p>
+            <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-4 text-pretty">{p.why}</p>
+            <div class="grid gap-4 md:grid-cols-2 pt-4 border-t border-[color:var(--color-ink)]/10">
+              <div>
+                <span class="block text-xs uppercase tracking-[0.15em] text-[color:var(--color-clay)] mb-1">What to order</span>
+                <p class="text-sm text-[color:var(--color-ink)]">{p.order}</p>
+              </div>
+              <div>
+                <span class="block text-xs uppercase tracking-[0.15em] text-[color:var(--color-clay)] mb-1">Wait & timing</span>
+                <p class="text-sm text-[color:var(--color-ink)]">{p.waitTip}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Tips -->
+  <section class="mx-auto max-w-5xl px-6 py-16">
+    <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-8 md:px-16 py-14 md:py-20 grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-4">
+        <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-gold)] mb-3">How to eat it</span>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight text-balance">Six things every BBQ first-timer gets wrong.</h2>
+      </div>
+      <ul class="md:col-span-8 space-y-5">
+        {tips.map((tip, i) => (
+          <li class="flex gap-4 text-base leading-relaxed">
+            <span class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-gold)] leading-none flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <span class="text-[color:var(--color-paper)]/90">{tip}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Gear -->
+  <section class="mx-auto max-w-3xl px-6 py-16">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">Go deeper</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-3 text-balance">Books and gear for the BBQ obsessed.</h2>
+    <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-10 text-pretty">
+      If a Houston BBQ run sparks the obsession (it usually does), these are the books and tools we'd hand to a friend going home with a smoker.
+    </p>
+    <div class="space-y-6">
+      {gear.map((it) => (
+        <a
+          href={amzn(it.asin)}
+          target="_blank"
+          rel="noopener nofollow sponsored"
+          class="block bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-6 hover:bg-[color:var(--color-cream-deep)] transition-colors group"
+        >
+          <span class="block text-xs uppercase tracking-[0.18em] text-[color:var(--color-clay)] mb-2">{it.author}</span>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">{it.title}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{it.why}</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+            View on Amazon
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="mx-auto max-w-7xl px-6 py-16 grid gap-px bg-[color:var(--color-ink)]/10 md:grid-cols-3">
+    <a href="/restaurants" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Keep reading</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Restaurants →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">The full Houston food landscape — Tex-Mex, Viet-Cajun, fine dining.</p>
+    </a>
+    <a href="/neighborhoods/heights" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Or browse</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">The Heights →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Truth and Pinkerton's both live in this Houston neighborhood.</p>
+    </a>
+    <a href="/plan" class="bg-[color:var(--color-cream)] p-8 hover:bg-[color:var(--color-paper)] transition-colors group">
+      <span class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-clay)] mb-2">Plan it</span>
+      <h3 class="font-[family-name:var(--font-display)] text-3xl group-hover:text-[color:var(--color-clay)] transition-colors">Build your trip →</h3>
+      <p class="text-sm mt-3 text-[color:var(--color-ink-soft)]">Tell the AI itinerary builder you want BBQ. It'll structure the day.</p>
+    </a>
+  </section>
+</BaseLayout>

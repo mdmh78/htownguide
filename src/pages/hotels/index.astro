@@ -95,6 +95,37 @@ const categories = [
     }
   </section>
 
+  <!-- TRAVEL GEAR SHELF -->
+  <section class="mx-auto max-w-3xl px-6 py-20">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-3">For the trip</span>
+    <h2 class="font-[family-name:var(--font-display)] text-4xl tracking-tight mb-3 text-balance">Three things worth packing for a Houston hotel stay.</h2>
+    <p class="text-base leading-relaxed text-[color:var(--color-ink-soft)] mb-10 text-pretty">
+      A few practical items that make a Houston trip noticeably easier. Hotel-tested, summer-tested, traffic-tested.
+    </p>
+    <div class="space-y-6">
+      {[
+        { title: "Hydro Flask 32oz insulated water bottle", author: "Hydro Flask", why: "Houston heat is no joke — even in spring. Hotels refill these at the front desk. Most museums and restaurants will too.", asin: "B077JBQZPX" },
+        { title: "Anker PowerCore 10000 portable charger", author: "Anker", why: "Long walking days drain phones fast. Ride-share apps, navigation, photos — all battery killers. Small enough to slip in any bag.", asin: "B0194WDVHI" },
+        { title: "Columbia Watertight II lightweight rain jacket", author: "Columbia", why: "Houston rain arrives suddenly and heavily, even in summer. This packs into its own pocket. Saves a day from being ruined.", asin: "B00HV02VW2" },
+      ].map((it) => (
+        <a
+          href={`https://www.amazon.com/dp/${it.asin}?tag=htownguide20-20`}
+          target="_blank"
+          rel="noopener nofollow sponsored"
+          class="block bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-6 hover:bg-[color:var(--color-cream-deep)] transition-colors group"
+        >
+          <span class="block text-xs uppercase tracking-[0.18em] text-[color:var(--color-clay)] mb-2">{it.author}</span>
+          <h3 class="font-[family-name:var(--font-display)] text-2xl mb-3 group-hover:text-[color:var(--color-clay)] transition-colors">{it.title}</h3>
+          <p class="text-sm leading-relaxed text-[color:var(--color-ink-soft)]">{it.why}</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-xs font-medium text-[color:var(--color-clay)] uppercase tracking-[0.15em]">
+            View on Amazon
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <section class="mx-auto max-w-3xl px-6 py-24 text-center">
     <p class="text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/60 mb-4">A note on links</p>
     <p class="text-sm text-[color:var(--color-ink-soft)] leading-relaxed max-w-xl mx-auto">
