@@ -238,9 +238,12 @@ const sections = [
     <p class="text-[color:var(--color-ink-soft)] mb-8 max-w-xl mx-auto text-pretty">
       New restaurant openings, neighborhood deep-dives, and the rare event worth crossing town for. No spam, no affiliate dump.
     </p>
-    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Newsletter signup coming soon!');">
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="newsletterForm">
+      <input type="hidden" name="form-name" value="newsletter" />
+      <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
       <input
         type="email"
+        name="email"
         required
         placeholder="you@example.com"
         class="flex-1 bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/15 px-4 py-3 text-sm focus:outline-none focus:border-[color:var(--color-clay)]"
@@ -252,5 +255,24 @@ const sections = [
         Subscribe
       </button>
     </form>
+    <p id="newsletterSuccess" class="hidden mt-6 text-sm text-[color:var(--color-clay)] font-[family-name:var(--font-display)] italic">Thanks — we'll be in touch.</p>
+    <script>
+      document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+          });
+          form.style.display = 'none';
+          document.getElementById('newsletterSuccess').classList.remove('hidden');
+        } catch (err) {
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    </script>
   </section>
 </BaseLayout>
