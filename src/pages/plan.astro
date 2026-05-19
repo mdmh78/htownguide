@@ -4,24 +4,307 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   title="Plan Your Houston Trip — AI Itinerary Builder | HtownGuide"
-  description="Tell us your dates and interests — we'll build you a custom 1-3 day Houston itinerary with neighborhoods, restaurants, hotels, and attractions."
+  description="Generate a custom Houston itinerary in seconds. Tell us your dates, interests, and neighborhood, and we'll build a day-by-day plan with restaurants, hotels, and activities."
 >
-  <section class="mx-auto max-w-3xl px-6 pt-20 pb-24 text-center">
-    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Coming soon</span>
-    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl tracking-tight leading-tight mb-8 text-balance">
-      AI-built Houston itineraries.
+  <section class="mx-auto max-w-3xl px-6 pt-20 pb-12">
+    <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Itinerary builder</span>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl tracking-tight leading-[0.95] mb-6 text-balance">
+      Build your <em class="italic font-normal text-[color:var(--color-clay)]">Houston</em>.
     </h1>
-    <p class="text-lg text-[color:var(--color-ink-soft)] mb-10 max-w-xl mx-auto text-pretty">
-      Tell us your dates, neighborhood, budget, and what you're into — we'll generate a complete 1–3 day Houston itinerary with restaurants, hotels, and activities matched to you.
+    <p class="text-lg leading-relaxed text-[color:var(--color-ink-soft)] max-w-2xl text-pretty">
+      Tell us how long you're in town and what you're into. We'll send back a hand-feeling day-by-day plan — restaurants by neighborhood, attractions matched to your interests, and the kind of advice you'd get from a friend who lives here.
     </p>
-    <p class="text-sm text-[color:var(--color-ink-soft)]/70 mb-8 max-w-md mx-auto">
-      Currently in development. In the meantime, browse our hand-picked guides:
-    </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="/neighborhoods" class="inline-flex items-center gap-2 border border-[color:var(--color-ink)]/20 px-5 py-3 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">Neighborhoods</a>
-      <a href="/hotels" class="inline-flex items-center gap-2 border border-[color:var(--color-ink)]/20 px-5 py-3 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">Hotels</a>
-      <a href="/restaurants" class="inline-flex items-center gap-2 border border-[color:var(--color-ink)]/20 px-5 py-3 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">Restaurants</a>
-      <a href="/things-to-do" class="inline-flex items-center gap-2 border border-[color:var(--color-ink)]/20 px-5 py-3 text-sm font-medium hover:bg-[color:var(--color-paper)] transition-colors">Things to Do</a>
-    </div>
   </section>
+
+  <section class="mx-auto max-w-3xl px-6 py-8">
+    <form id="planForm" class="space-y-8 bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-8 md:p-10">
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          How many days in Houston?
+        </label>
+        <div class="grid grid-cols-5 gap-2" id="daysGroup">
+          {[1,2,3,4,5].map(n => (
+            <button type="button" data-value={n} class="day-btn border border-[color:var(--color-ink)]/15 py-3 text-sm font-medium hover:bg-[color:var(--color-cream-deep)] transition-colors">
+              {n}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          What are you into? (pick any)
+        </label>
+        <div class="flex flex-wrap gap-2" id="interestsGroup">
+          {['Food','Art & museums','Sports','Live music','Outdoors','Shopping','Nightlife','Architecture','Family-friendly','Off-the-beaten-path','World Cup 2026'].map(t => (
+            <button type="button" data-value={t} class="interest-btn border border-[color:var(--color-ink)]/15 px-4 py-2 text-sm hover:bg-[color:var(--color-cream-deep)] transition-colors">
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          Where are you staying? <span class="normal-case opacity-60">(optional)</span>
+        </label>
+        <div class="flex flex-wrap gap-2" id="neighborhoodGroup">
+          {['Downtown','Montrose','Heights','Museum District','Galleria / Uptown','Medical Center','Near NRG','Not sure yet'].map(t => (
+            <button type="button" data-value={t} class="nh-btn border border-[color:var(--color-ink)]/15 px-4 py-2 text-sm hover:bg-[color:var(--color-cream-deep)] transition-colors">
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          Budget vibe?
+        </label>
+        <div class="grid grid-cols-3 gap-2" id="budgetGroup">
+          {['Budget','Mid-range','No limit'].map(t => (
+            <button type="button" data-value={t} class="budget-btn border border-[color:var(--color-ink)]/15 py-3 text-sm font-medium hover:bg-[color:var(--color-cream-deep)] transition-colors">
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          Who's with you?
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="withGroup">
+          {['Solo','Partner','Family with kids','Friends'].map(t => (
+            <button type="button" data-value={t} class="with-btn border border-[color:var(--color-ink)]/15 py-3 text-sm font-medium hover:bg-[color:var(--color-cream-deep)] transition-colors">
+              {t}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]/70 mb-3">
+          Anything else we should know? <span class="normal-case opacity-60">(optional)</span>
+        </label>
+        <textarea
+          id="extras"
+          rows="3"
+          placeholder="e.g. one of us is gluten-free, we want to see the Astros play, attending a World Cup match on June 14..."
+          class="w-full bg-[color:var(--color-cream)] border border-[color:var(--color-ink)]/15 px-4 py-3 text-sm focus:outline-none focus:border-[color:var(--color-clay)] resize-none"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        id="submitBtn"
+        class="w-full bg-[color:var(--color-ink)] text-[color:var(--color-paper)] py-4 text-sm font-medium hover:bg-[color:var(--color-clay)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Build my itinerary
+      </button>
+    </form>
+  </section>
+
+  <section id="resultSection" class="mx-auto max-w-3xl px-6 py-8 hidden">
+    <div id="loadingState" class="hidden text-center py-16">
+      <p class="font-[family-name:var(--font-display)] text-2xl italic text-[color:var(--color-clay)]">
+        Talking to a Houston local…
+      </p>
+      <p class="text-sm text-[color:var(--color-ink-soft)] mt-3">Usually takes about 20 seconds.</p>
+    </div>
+
+    <div id="errorState" class="hidden bg-[color:var(--color-paper)] border border-[color:var(--color-clay)]/30 p-6">
+      <p class="text-sm text-[color:var(--color-clay-dark)]" id="errorMessage"></p>
+    </div>
+
+    <article id="itineraryOutput" class="hidden bg-[color:var(--color-paper)] border border-[color:var(--color-ink)]/10 p-8 md:p-10">
+      <span class="block text-xs uppercase tracking-[0.25em] text-[color:var(--color-clay)] mb-4">Your itinerary</span>
+      <div id="itineraryContent"></div>
+      <div class="mt-10 pt-8 border-t border-[color:var(--color-ink)]/10 flex flex-wrap gap-3">
+        <button id="regenBtn" class="border border-[color:var(--color-ink)]/15 px-5 py-2.5 text-sm hover:bg-[color:var(--color-cream-deep)] transition-colors">
+          Try another version
+        </button>
+        <button id="newBtn" class="text-sm text-[color:var(--color-ink-soft)] px-2 py-2.5 hover:text-[color:var(--color-clay)]">
+          Start over
+        </button>
+      </div>
+    </article>
+  </section>
+
+  <style is:inline>
+    .selected {
+      background-color: var(--color-ink) !important;
+      color: var(--color-paper) !important;
+      border-color: var(--color-ink) !important;
+    }
+    #itineraryContent h2 {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-ink);
+    }
+    #itineraryContent h2:first-child { margin-top: 0; }
+    #itineraryContent h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-ink);
+    }
+    #itineraryContent p {
+      line-height: 1.75;
+      color: var(--color-ink-soft);
+      margin-bottom: 1rem;
+    }
+    #itineraryContent strong {
+      color: var(--color-ink);
+      font-weight: 600;
+    }
+    #itineraryContent ul, #itineraryContent ol {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      color: var(--color-ink-soft);
+      line-height: 1.75;
+    }
+    #itineraryContent li { margin-bottom: 0.4rem; }
+    #itineraryContent em { font-style: italic; color: var(--color-clay); }
+  </style>
+
+  <script>
+    const state = {
+      days: null,
+      interests: new Set(),
+      neighborhood: null,
+      budget: null,
+      traveling_with: null,
+    };
+
+    function wireSingle(groupId, key) {
+      document.querySelectorAll(`#${groupId} button`).forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll(`#${groupId} button`).forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          state[key] = btn.dataset.value;
+        });
+      });
+    }
+    wireSingle('daysGroup', 'days');
+    wireSingle('neighborhoodGroup', 'neighborhood');
+    wireSingle('budgetGroup', 'budget');
+    wireSingle('withGroup', 'traveling_with');
+
+    document.querySelectorAll('#interestsGroup button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.value;
+        if (state.interests.has(v)) {
+          state.interests.delete(v);
+          btn.classList.remove('selected');
+        } else {
+          state.interests.add(v);
+          btn.classList.add('selected');
+        }
+      });
+    });
+
+    const form = document.getElementById('planForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const resultSection = document.getElementById('resultSection');
+    const loadingState = document.getElementById('loadingState');
+    const errorState = document.getElementById('errorState');
+    const errorMessage = document.getElementById('errorMessage');
+    const output = document.getElementById('itineraryOutput');
+    const content = document.getElementById('itineraryContent');
+
+    async function generate() {
+      if (!state.days) {
+        alert('Please choose how many days.');
+        return;
+      }
+      submitBtn.disabled = true;
+      resultSection.classList.remove('hidden');
+      loadingState.classList.remove('hidden');
+      errorState.classList.add('hidden');
+      output.classList.add('hidden');
+      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      const payload = {
+        days: parseInt(state.days, 10),
+        interests: [...state.interests],
+        neighborhood: state.neighborhood,
+        budget: state.budget,
+        traveling_with: state.traveling_with,
+        extras: document.getElementById('extras').value || null,
+      };
+
+      try {
+        const res = await fetch('/api/itinerary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        loadingState.classList.add('hidden');
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: 'Something went wrong' }));
+          errorMessage.textContent = err.error || 'Something went wrong. Please try again.';
+          errorState.classList.remove('hidden');
+        } else {
+          const data = await res.json();
+          content.innerHTML = mdToHtml(data.itinerary);
+          output.classList.remove('hidden');
+        }
+      } catch (e) {
+        loadingState.classList.add('hidden');
+        errorMessage.textContent = 'Network error. Please try again.';
+        errorState.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    }
+
+    form.addEventListener('submit', (e) => { e.preventDefault(); generate(); });
+    document.getElementById('regenBtn').addEventListener('click', generate);
+    document.getElementById('newBtn').addEventListener('click', () => {
+      resultSection.classList.add('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function mdToHtml(md) {
+      let s = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      s = s.replace(/^### (.*)$/gm, '<h3>$1</h3>');
+      s = s.replace(/^## (.*)$/gm, '<h2>$1</h2>');
+      s = s.replace(/^# (.*)$/gm, '<h2>$1</h2>');
+      s = s.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+      s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      s = s.replace(/\*([^*\n]+?)\*/g, '<em>$1</em>');
+      const lines = s.split('\n');
+      const out = [];
+      let inUl = false, inOl = false;
+      for (let ln of lines) {
+        if (/^\s*[-*]\s+/.test(ln)) {
+          if (!inUl) { if (inOl) { out.push('</ol>'); inOl = false; } out.push('<ul>'); inUl = true; }
+          out.push('<li>' + ln.replace(/^\s*[-*]\s+/, '') + '</li>');
+        } else if (/^\s*\d+\.\s+/.test(ln)) {
+          if (!inOl) { if (inUl) { out.push('</ul>'); inUl = false; } out.push('<ol>'); inOl = true; }
+          out.push('<li>' + ln.replace(/^\s*\d+\.\s+/, '') + '</li>');
+        } else {
+          if (inUl) { out.push('</ul>'); inUl = false; }
+          if (inOl) { out.push('</ol>'); inOl = false; }
+          out.push(ln);
+        }
+      }
+      if (inUl) out.push('</ul>');
+      if (inOl) out.push('</ol>');
+      s = out.join('\n');
+      s = s.split(/\n{2,}/).map(block => {
+        if (/^<(h2|h3|ul|ol)/.test(block.trim())) return block;
+        if (!block.trim()) return '';
+        return '<p>' + block.replace(/\n/g, '<br/>') + '</p>';
+      }).join('\n');
+      return s;
+    }
+  </script>
 </BaseLayout>
